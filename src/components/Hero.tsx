@@ -132,7 +132,7 @@ const Hero = () => {
                 <img 
                   src={Logo} 
                   alt="Terrene Engineering Logo" 
-                  className="h-20 w-auto" // Increased from h-14 to h-20
+                  className="h-24 w-auto" // Increased from h-14 to h-20
                   style={{ marginTop: '-8px', marginBottom: '-8px' }} // Negative margins to prevent navbar expansion
                 />
               </Link>
@@ -151,10 +151,10 @@ const Hero = () => {
                   <NavigationMenuTrigger className="text-white hover:text-primary-100 bg-transparent">
                     COMPANY
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-48 p-2">
+                  <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
+                    <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
                       <NavigationMenuLink asChild>
-                        <Link to="/about" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                        <Link to="/about" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                           About Us
                         </Link>
                       </NavigationMenuLink>

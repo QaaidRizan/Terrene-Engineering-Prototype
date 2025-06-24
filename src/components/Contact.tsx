@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,11 +34,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-slate-50">
+    <section id="contact" className="py-20 bg-[#141414]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Ready to start your next engineering project? Contact our team of experts 
             for professional consultation and innovative solutions.
           </p>
@@ -47,34 +46,34 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
-            <Card>
+            <Card className="!bg-[#1a1a1a] !border-gray-700">
               <CardHeader>
-                <CardTitle>Send us a Message</CardTitle>
+                <CardTitle className="!text-white">Send us a Message</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">First Name</label>
-                    <Input placeholder="John" />
+                    <label className="block text-sm font-medium text-white mb-2">First Name</label>
+                    <Input placeholder="John" className="!bg-[#2a2a2a] !text-white !border-gray-700" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Last Name</label>
-                    <Input placeholder="Doe" />
+                    <label className="block text-sm font-medium text-white mb-2">Last Name</label>
+                    <Input placeholder="Doe" className="!bg-[#2a2a2a] !text-white !border-gray-700" />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email</label>
-                    <Input type="email" placeholder="john@example.com" />
+                    <label className="block text-sm font-medium text-white mb-2">Email</label>
+                    <Input type="email" placeholder="john@example.com" className="!bg-[#2a2a2a] !text-white !border-gray-700" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Phone</label>
-                    <Input placeholder="+94 71 234 5678" />
+                    <label className="block text-sm font-medium text-white mb-2">Phone</label>
+                    <Input placeholder="+94 71 234 5678" className="!bg-[#2a2a2a] !text-white !border-gray-700" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Project Type</label>
-                  <select className="w-full p-3 border border-input rounded-md bg-background">
+                  <label className="block text-sm font-medium text-white mb-2">Project Type</label>
+                  <select className="w-full p-3 border border-gray-700 rounded-md bg-[#2a2a2a] text-white">
                     <option>Select a service</option>
                     <option>Structural Engineering</option>
                     <option>Civil Engineering</option>
@@ -84,13 +83,13 @@ const Contact = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Message</label>
+                  <label className="block text-sm font-medium text-white mb-2">Message</label>
                   <Textarea 
                     placeholder="Tell us about your project requirements..."
-                    className="min-h-[120px]"
+                    className="min-h-[120px] bg-[#2a2a2a] text-white border-gray-700"
                   />
                 </div>
-                <Button size="lg" className="w-full">
+                <Button size="lg" className="w-full bg-primary text-primary-foreground">
                   Send Message
                 </Button>
               </CardContent>
@@ -99,7 +98,7 @@ const Contact = () => {
 
           <div className="space-y-6">
             {contactInfo.map((item, index) => (
-              <Card key={index}>
+              <Card key={index} className="bg-card border-border">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-10 h-10 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0">

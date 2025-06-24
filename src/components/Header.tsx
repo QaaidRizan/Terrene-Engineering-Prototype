@@ -40,7 +40,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+    <header className="bg-background shadow-sm border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -49,16 +49,16 @@ const Header = () => {
               <img 
                 src={Logo} 
                 alt="Terrene Engineering Logo" 
-                className="h-14 w-auto" // Increased from h-10 to h-14
+                className="h-14 w-auto"
               />
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Navigation items - update text colors */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link to="/" className="text-foreground hover:text-primary transition-colors px-3 py-2">
+                <Link to="/" className="text-foreground hover:text-primary-100 transition-colors px-3 py-2">
                   HOME
                 </Link>
               </NavigationMenuItem>
@@ -67,10 +67,10 @@ const Header = () => {
                 <NavigationMenuTrigger className="text-foreground hover:text-primary">
                   COMPANY
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-48 p-2">
+                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
+                  <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
                     <NavigationMenuLink asChild>
-                      <Link to="/about" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                      <Link to="/about" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         About Us
                       </Link>
                     </NavigationMenuLink>
@@ -97,11 +97,11 @@ const Header = () => {
                 <NavigationMenuTrigger className="text-foreground hover:text-primary">
                   SERVICES
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-72 max-h-96 overflow-y-auto p-2 grid grid-cols-1 gap-1">
+                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
+                  <div className="w-72 max-h-96 overflow-y-auto p-2 grid grid-cols-1 gap-1 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
                     {services.map((service) => (
                       <NavigationMenuLink asChild key={service.to}>
-                        <Link to={service.to} className="block px-3 py-2 text-sm hover:bg-accent rounded whitespace-nowrap">
+                        <Link to={service.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded whitespace-nowrap">
                           {service.label}
                         </Link>
                       </NavigationMenuLink>
@@ -114,8 +114,8 @@ const Header = () => {
                 <NavigationMenuTrigger className="text-foreground hover:text-primary">
                   SOFTWARE EXPERTISE
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-48 p-2">
+                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
+                  <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
                     <NavigationMenuLink asChild>
                       <Link to="/autocad" className="block px-3 py-2 text-sm hover:bg-accent rounded">
                         AutoCAD
@@ -144,20 +144,20 @@ const Header = () => {
                 <NavigationMenuTrigger className="text-foreground hover:text-primary">
                   PORTFOLIO
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-48 p-2">
+                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
+                  <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
                     <NavigationMenuLink asChild>
-                      <Link to="/residential" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                      <Link to="/residential" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         Residential Projects
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/commercial" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                      <Link to="/commercial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         Commercial Projects
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/industrial" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                      <Link to="/industrial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         Industrial Projects
                       </Link>
                     </NavigationMenuLink>
