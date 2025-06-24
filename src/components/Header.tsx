@@ -12,6 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 // Import the logo
 import Logo from '@/assert/Logo2.png';
+import Faq from '@/pages/Faq';
 
 const services = [
   { label: 'Architectural Consultancy', to: '/architectural-consulting' },
@@ -38,6 +39,16 @@ const services = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+  // Helper function to toggle sections
+  const toggleSection = (section: string) => {
+    if (expandedSection === section) {
+      setExpandedSection(null);
+    } else {
+      setExpandedSection(section);
+    }
+  };
 
   return (
     <header className="bg-background shadow-sm border-b border-border sticky top-0 z-50">
@@ -70,13 +81,13 @@ const Header = () => {
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                   <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
                     <NavigationMenuLink asChild>
-                      <Link to="/about" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                      <Link to="/about" className="block px-3 py-2 text-sm text-foreground hover:bg-accent rounded">
                         About Us
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/history" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Our History
+                      <Link to="/Faq" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                        FAQ
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
@@ -93,19 +104,189 @@ const Header = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
+              {/* Mega menu for SERVICES */}
               <NavigationMenuItem className="relative">
                 <NavigationMenuTrigger className="text-foreground hover:text-primary">
                   SERVICES
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="w-72 max-h-96 overflow-y-auto p-2 grid grid-cols-1 gap-1 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
-                    {services.map((service) => (
-                      <NavigationMenuLink asChild key={service.to}>
-                        <Link to={service.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded whitespace-nowrap">
-                          {service.label}
+                  <div className="w-[800px] p-6 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
+                    <div className="grid grid-cols-4 gap-x-6 gap-y-3">
+                      {/* Column 1 - Architectural Services */}
+                      <div className="space-y-3">
+                        <h3 className="text-primary font-medium text-sm">Architectural</h3>
+                        <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/architectural-consulting" className="block text-sm hover:text-primary transition-colors">
+                                Architectural Consultancy
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/interior-design" className="block text-sm hover:text-primary transition-colors">
+                                Interior Design Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/furniture-design" className="block text-sm hover:text-primary transition-colors">
+                                Furniture Design & Supply
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/acoustic-lighting" className="block text-sm hover:text-primary transition-colors">
+                                Acoustic & Lighting Design
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/master-planning" className="block text-sm hover:text-primary transition-colors">
+                                Master Planning & Urban Design
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Column 2 - Engineering Services */}
+                      <div className="space-y-3">
+                        <h3 className="text-primary font-medium text-sm">Engineering</h3>
+                        <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/structural-consultancy" className="block text-sm hover:text-primary transition-colors">
+                                Structural Consultancy
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/mep-engineering" className="block text-sm hover:text-primary transition-colors">
+                                MEP Engineering
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/hvac-solutions" className="block text-sm hover:text-primary transition-colors">
+                                HVAC Solutions
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/elv-services" className="block text-sm hover:text-primary transition-colors">
+                                ELV Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/material-consultancy" className="block text-sm hover:text-primary transition-colors">
+                                Material Consultancy
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Column 3 - Technical Services */}
+                      <div className="space-y-3">
+                        <h3 className="text-primary font-medium text-sm">Technical</h3>
+                        <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/laboratory-testing" className="block text-sm hover:text-primary transition-colors">
+                                Laboratory Testing
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/land-surveying" className="block text-sm hover:text-primary transition-colors">
+                                Land Surveying & GIS Mapping
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/bim-services" className="block text-sm hover:text-primary transition-colors">
+                                BIM Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/software-training" className="block text-sm hover:text-primary transition-colors">
+                                Software Training
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/import-export" className="block text-sm hover:text-primary transition-colors">
+                                Import & Export Materials
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* Column 4 - Project Management */}
+                      <div className="space-y-3">
+                        <h3 className="text-primary font-medium text-sm">Project Management</h3>
+                        <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/construction-services" className="block text-sm hover:text-primary transition-colors">
+                                Construction Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/project-management" className="block text-sm hover:text-primary transition-colors">
+                                Project Management
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/quantity-surveying" className="block text-sm hover:text-primary transition-colors">
+                                Quantity Surveying
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/construction-claims" className="block text-sm hover:text-primary transition-colors">
+                                Construction Claims
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/tendering-procurement" className="block text-sm hover:text-primary transition-colors">
+                                Tendering & Procurement
                         </Link>
                       </NavigationMenuLink>
-                    ))}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Footer with all services link */}
+                    <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
+                      <Link to="/services" className="text-xs text-primary flex items-center gap-1">
+                        View All Services <ChevronDown className="h-3 w-3 rotate-270" />
+                      </Link>
+                    </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -142,39 +323,35 @@ const Header = () => {
 
               <NavigationMenuItem className="relative">
                 <NavigationMenuTrigger className="text-foreground hover:text-primary">
-                  PORTFOLIO
+                  PROJECTS
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
+                  <div className="w-48 p-2">
                     <NavigationMenuLink asChild>
-                      <Link to="/residential" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                      <Link to="/residential" className="block px-3 py-2 text-sm hover:bg-accent rounded">
                         Residential Projects
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/commercial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                      <Link to="/commercial" className="block px-3 py-2 text-sm hover:bg-accent rounded">
                         Commercial Projects
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/industrial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                      <Link to="/industrial" className="block px-3 py-2 text-sm hover:bg-accent rounded">
                         Industrial Projects
                       </Link>
                     </NavigationMenuLink>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <Link to="/inquiry" className="text-foreground hover:text-primary transition-colors px-3 py-2">
-                  INQUIRY
-                </Link>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline">Get Quote</Button>
+            <Button variant="outline" asChild>
+              <Link to="/inquiry">INQUIRY</Link>
+            </Button>
             <Button>Contact Us</Button>
           </div>
 
@@ -192,22 +369,130 @@ const Header = () => {
           <nav className="md:hidden mt-4 pb-4 border-t pt-4">
             <div className="flex flex-col space-y-4">
               <Link to="/" className="text-foreground hover:text-primary transition-colors">HOME</Link>
-              <Link to="/about" className="text-foreground hover:text-primary transition-colors">COMPANY</Link>
+              
+              {/* Company Section */}
               <div>
-                <div className="font-semibold text-foreground">SERVICES</div>
-                <div className="pl-4 flex flex-col space-y-2">
-                  {services.map((service) => (
-                    <Link key={service.to} to={service.to} className="block text-sm text-muted-foreground hover:text-primary">
-                      {service.label}
+                <button 
+                  onClick={() => toggleSection('company')}
+                  className="flex items-center justify-between w-full text-left text-foreground hover:text-primary transition-colors"
+                >
+                  <span>COMPANY</span>
+                  <ChevronDown 
+                    size={16} 
+                    className={`transform transition-transform ${expandedSection === 'company' ? 'rotate-180' : ''}`} 
+                  />
+                </button>
+                
+                {expandedSection === 'company' && (
+                  <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
+                    <Link to="/about" className="block text-sm text-muted-foreground hover:text-primary">
+                      About Us
+                    </Link>
+                    <Link to="/Faq" className="block text-sm text-muted-foreground hover:text-primary">
+                      FAQ
+                    </Link>
+                    <Link to="/team" className="block text-sm text-muted-foreground hover:text-primary">
+                      Our Team
+                    </Link>
+                    <Link to="/mission" className="block text-sm text-muted-foreground hover:text-primary">
+                      Mission & Vision
+                    </Link>
+                  </div>
+                )}
+              </div>
+              
+              {/* Services Section */}
+              <div>
+                <button 
+                  onClick={() => toggleSection('services')}
+                  className="flex items-center justify-between w-full text-left text-foreground hover:text-primary transition-colors"
+                >
+                  <span>SERVICES</span>
+                  <ChevronDown 
+                    size={16} 
+                    className={`transform transition-transform ${expandedSection === 'services' ? 'rotate-180' : ''}`} 
+                  />
+                </button>
+                
+                {expandedSection === 'services' && (
+                  <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10 max-h-80 overflow-y-auto">
+                    {services.map((service) => (
+                      <Link 
+                        key={service.to} 
+                        to={service.to} 
+                        className="block text-sm text-muted-foreground hover:text-primary"
+                      >
+                        {service.label}
                     </Link>
                   ))}
                 </div>
+                )}
               </div>
-              <Link to="/autocad" className="text-foreground hover:text-primary transition-colors">SOFTWARE EXPERTISE</Link>
-              <Link to="/residential" className="text-foreground hover:text-primary transition-colors">PORTFOLIO</Link>
-              <Link to="/inquiry" className="text-foreground hover:text-primary transition-colors">INQUIRY</Link>
+
+              {/* Software Expertise Section */}
+              <div>
+                <button 
+                  onClick={() => toggleSection('software')}
+                  className="flex items-center justify-between w-full text-left text-foreground hover:text-primary transition-colors"
+                >
+                  <span>SOFTWARE EXPERTISE</span>
+                  <ChevronDown 
+                    size={16} 
+                    className={`transform transition-transform ${expandedSection === 'software' ? 'rotate-180' : ''}`} 
+                  />
+                </button>
+                
+                {expandedSection === 'software' && (
+                  <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
+                    <Link to="/autocad" className="block text-sm text-muted-foreground hover:text-primary">
+                      AutoCAD
+                    </Link>
+                    <Link to="/revit" className="block text-sm text-muted-foreground hover:text-primary">
+                      Revit
+                    </Link>
+                    <Link to="/etabs" className="block text-sm text-muted-foreground hover:text-primary">
+                      ETABS
+                    </Link>
+                    <Link to="/staad-pro" className="block text-sm text-muted-foreground hover:text-primary">
+                      STAAD Pro
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Projects Section */}
+              <div>
+                <button 
+                  onClick={() => toggleSection('projects')}
+                  className="flex items-center justify-between w-full text-left text-foreground hover:text-primary transition-colors"
+                >
+                  <span>PROJECTS</span>
+                  <ChevronDown 
+                    size={16} 
+                    className={`transform transition-transform ${expandedSection === 'projects' ? 'rotate-180' : ''}`} 
+                  />
+                </button>
+                
+                {expandedSection === 'projects' && (
+                  <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
+                    <Link to="/residential" className="block text-sm text-muted-foreground hover:text-primary">
+                      Residential Projects
+                    </Link>
+                    <Link to="/commercial" className="block text-sm text-muted-foreground hover:text-primary">
+                      Commercial Projects
+                    </Link>
+                    <Link to="/industrial" className="block text-sm text-muted-foreground hover:text-primary">
+                      Industrial Projects
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Buttons */}
               <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="outline" size="sm">Get Quote</Button>
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/inquiry">INQUIRY</Link>
+                </Button>
                 <Button size="sm">Contact Us</Button>
               </div>
             </div>

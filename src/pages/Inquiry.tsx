@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -43,62 +42,62 @@ const Inquiry = () => {
             <div className="grid lg:grid-cols-2 gap-12">
               <div>
                 <h2 className="text-2xl font-semibold mb-6">Send Us a Message</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-6 bg-gray-900 p-8 rounded-lg shadow-md border border-gray-800">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Full Name *</label>
+                      <label className="block text-sm font-medium mb-2 text-gray-200">Full Name *</label>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-5 py-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm placeholder-gray-500"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Email Address *</label>
+                      <label className="block text-sm font-medium mb-2 text-gray-200">Email Address *</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-5 py-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm placeholder-gray-500"
                         required
                       />
                     </div>
                   </div>
                   
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Phone Number</label>
+                      <label className="block text-sm font-medium mb-2 text-gray-200">Phone Number</label>
                       <input
                         type="tel"
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-5 py-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm placeholder-gray-500"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Company/Organization</label>
+                      <label className="block text-sm font-medium mb-2 text-gray-200">Company/Organization</label>
                       <input
                         type="text"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-5 py-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm placeholder-gray-500"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">Service Required</label>
+                    <label className="block text-sm font-medium mb-2 text-gray-200">Service Required</label>
                     <select
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-5 py-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
                     >
                       <option value="">Select a service</option>
                       <option value="structural-design">Structural Design</option>
@@ -110,76 +109,82 @@ const Inquiry = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">Project Details *</label>
+                    <label className="block text-sm font-medium mb-2 text-gray-200">Project Details *</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
-                      className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-5 py-4 bg-gray-800 text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary shadow-sm placeholder-gray-500"
                       placeholder="Please describe your project requirements, timeline, and any specific needs..."
                       required
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full py-6 text-base font-medium"
+                  >
                     Send Inquiry
                   </Button>
                 </form>
               </div>
 
               <div>
-                <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Phone</h3>
-                      <p className="text-muted-foreground">+94 11 234 5678</p>
-                      <p className="text-muted-foreground">+94 77 123 4567</p>
+                <h2 className="text-2xl font-semibold mb-6 text-white">Contact Information</h2>
+                <div className="bg-gray-900 p-8 rounded-lg shadow-md border border-gray-800">
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold mb-1">Phone</h3>
+                        <p className="text-muted-foreground">+94 11 234 5678</p>
+                        <p className="text-muted-foreground">+94 77 123 4567</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold mb-1">Email</h3>
+                        <p className="text-muted-foreground">info@terreneengineering.com</p>
+                        <p className="text-muted-foreground">projects@terreneengineering.com</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold mb-1">Office Address</h3>
+                        <p className="text-muted-foreground">
+                          123 Engineering Plaza,<br />
+                          Colombo 03,<br />
+                          Sri Lanka
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-4">
+                      <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold mb-1">Business Hours</h3>
+                        <p className="text-muted-foreground">
+                          Monday - Friday: 8:00 AM - 6:00 PM<br />
+                          Saturday: 8:00 AM - 1:00 PM<br />
+                          Sunday: Closed
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Email</h3>
-                      <p className="text-muted-foreground">info@terreneengineering.com</p>
-                      <p className="text-muted-foreground">projects@terreneengineering.com</p>
-                    </div>
+                  <div className="mt-8 bg-gray-900 rounded-lg p-8 shadow-md border border-gray-800">
+                    <h3 className="font-semibold mb-3 text-white">Quick Response Guarantee</h3>
+                    <p className="text-gray-400 text-sm">
+                      We guarantee to respond to all inquiries within 24 hours during business days. 
+                      For urgent matters, please call our office directly.
+                    </p>
                   </div>
-
-                  <div className="flex items-start space-x-4">
-                    <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Office Address</h3>
-                      <p className="text-muted-foreground">
-                        123 Engineering Plaza,<br />
-                        Colombo 03,<br />
-                        Sri Lanka
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold mb-1">Business Hours</h3>
-                      <p className="text-muted-foreground">
-                        Monday - Friday: 8:00 AM - 6:00 PM<br />
-                        Saturday: 8:00 AM - 1:00 PM<br />
-                        Sunday: Closed
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 bg-slate-50 rounded-lg p-6">
-                  <h3 className="font-semibold mb-3">Quick Response Guarantee</h3>
-                  <p className="text-muted-foreground text-sm">
-                    We guarantee to respond to all inquiries within 24 hours during business days. 
-                    For urgent matters, please call our office directly.
-                  </p>
                 </div>
               </div>
             </div>

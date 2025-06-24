@@ -1,6 +1,7 @@
-
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Youtube, MessageCircle } from 'lucide-react';
+// Import logo from assets folder
+import Logo2 from '../assert/Logo2.png';
 
 const Footer = () => {
   return (
@@ -8,9 +9,10 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
+            {/* Replace the T logo with the actual logo image */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">T</span>
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src={Logo2} alt="Terrene Engineering Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="font-bold text-lg">Terrene Engineering</h3>
@@ -21,6 +23,7 @@ const Footer = () => {
               Professional engineering solutions with over 20 years of experience 
               in structural design, civil engineering, and architectural consulting.
             </p>
+            {/* Expanded social media links with WhatsApp and YouTube */}
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5" />
@@ -30,6 +33,14 @@ const Footer = () => {
               </a>
               <a href="#" className="text-gray-400 hover:text-primary transition-colors">
                 <Facebook className="w-5 h-5" />
+              </a>
+              {/* Added WhatsApp icon */}
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <MessageCircle className="w-5 h-5" />
+              </a>
+              {/* Added YouTube icon */}
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>

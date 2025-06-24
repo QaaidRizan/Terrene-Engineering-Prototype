@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
-import History from "./pages/History";
+import History from "./pages/Faq";
 import Team from "./pages/Team";
 import Mission from "./pages/Mission";
 import StructuralDesign from "./pages/StructuralDesign";
@@ -23,7 +23,7 @@ import Industrial from "./pages/Industrial";
 import Career from "./pages/Career";
 import Inquiry from "./pages/Inquiry";
 import Services from "./components/Services";
-
+import Faq from "./pages/Faq";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -35,7 +35,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
-          <Route path="/history" element={<History />} />
+          <Route path="/Faq" element={<Faq />} />
           <Route path="/team" element={<Team />} />
           <Route path="/mission" element={<Mission />} />
           <Route path="/structural-design" element={<StructuralDesign />} />
