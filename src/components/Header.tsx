@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import {
@@ -10,6 +10,31 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Link } from 'react-router-dom';
+// Import the logo
+import Logo from '@/assert/Logo2.png';
+
+const services = [
+  { label: 'Architectural Consultancy', to: '/architectural-consulting' },
+  { label: 'Interior Design Services', to: '/interior-design' },
+  { label: 'Furniture Design & Supply', to: '/furniture-design' },
+  { label: 'Acoustic & Lighting Design Consultancy', to: '/acoustic-lighting' },
+  { label: 'Master Planning & Urban Design', to: '/master-planning' },
+  { label: 'Structural Consultancy', to: '/structural-consultancy' },
+  { label: 'MEP Engineering', to: '/mep-engineering' },
+  { label: 'HVAC Solutions', to: '/hvac-solutions' },
+  { label: 'ELV (Extra Low Voltage) Services', to: '/elv-services' },
+  { label: 'Material Consultancy', to: '/material-consultancy' },
+  { label: 'Laboratory Testing & Feasibility Studies', to: '/laboratory-testing' },
+  { label: 'Land Surveying & GIS Mapping', to: '/land-surveying' },
+  { label: 'Construction & Subcontracting Services', to: '/construction-services' },
+  { label: 'Project Management & Supervision', to: '/project-management' },
+  { label: 'Quantity Surveying & Cost Consultancy', to: '/quantity-surveying' },
+  { label: 'Construction Claims & Contract Advisory', to: '/construction-claims' },
+  { label: 'Building Information Modeling (BIM) Services', to: '/bim-services' },
+  { label: 'Software Training for Construction Industry', to: '/software-training' },
+  { label: 'Import & Export of Construction and Interior Materials', to: '/import-export' },
+  { label: 'Tendering & Procurement Consultancy', to: '/tendering-procurement' },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,14 +43,15 @@ const Header = () => {
     <header className="bg-white shadow-sm border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">T</span>
-            </div>
-            <div>
-              <h1 className="font-bold text-xl text-foreground">Terrene Engineering</h1>
-              <p className="text-sm text-muted-foreground">(Private) Limited</p>
-            </div>
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link to="/">
+              <img 
+                src={Logo} 
+                alt="Terrene Engineering Logo" 
+                className="h-14 w-auto" // Increased from h-10 to h-14
+              />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -72,27 +98,14 @@ const Header = () => {
                   SERVICES
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="w-56 p-2">
-                    <NavigationMenuLink asChild>
-                      <Link to="/structural-design" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Structural Design
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="/civil-engineering" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Civil Engineering
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="/architectural-consulting" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Architectural Consulting
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="/project-management" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Project Management
-                      </Link>
-                    </NavigationMenuLink>
+                  <div className="w-72 max-h-96 overflow-y-auto p-2 grid grid-cols-1 gap-1">
+                    {services.map((service) => (
+                      <NavigationMenuLink asChild key={service.to}>
+                        <Link to={service.to} className="block px-3 py-2 text-sm hover:bg-accent rounded whitespace-nowrap">
+                          {service.label}
+                        </Link>
+                      </NavigationMenuLink>
+                    ))}
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -153,12 +166,6 @@ const Header = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link to="/career" className="text-foreground hover:text-primary transition-colors px-3 py-2">
-                  CAREER
-                </Link>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
                 <Link to="/inquiry" className="text-foreground hover:text-primary transition-colors px-3 py-2">
                   INQUIRY
                 </Link>
@@ -186,10 +193,18 @@ const Header = () => {
             <div className="flex flex-col space-y-4">
               <Link to="/" className="text-foreground hover:text-primary transition-colors">HOME</Link>
               <Link to="/about" className="text-foreground hover:text-primary transition-colors">COMPANY</Link>
-              <Link to="/structural-design" className="text-foreground hover:text-primary transition-colors">SERVICES</Link>
+              <div>
+                <div className="font-semibold text-foreground">SERVICES</div>
+                <div className="pl-4 flex flex-col space-y-2">
+                  {services.map((service) => (
+                    <Link key={service.to} to={service.to} className="block text-sm text-muted-foreground hover:text-primary">
+                      {service.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
               <Link to="/autocad" className="text-foreground hover:text-primary transition-colors">SOFTWARE EXPERTISE</Link>
               <Link to="/residential" className="text-foreground hover:text-primary transition-colors">PORTFOLIO</Link>
-              <Link to="/career" className="text-foreground hover:text-primary transition-colors">CAREER</Link>
               <Link to="/inquiry" className="text-foreground hover:text-primary transition-colors">INQUIRY</Link>
               <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="outline" size="sm">Get Quote</Button>
@@ -204,3 +219,4 @@ const Header = () => {
 };
 
 export default Header;
+export { services };

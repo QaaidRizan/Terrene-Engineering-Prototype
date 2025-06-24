@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,18 +10,19 @@ import History from "./pages/History";
 import Team from "./pages/Team";
 import Mission from "./pages/Mission";
 import StructuralDesign from "./pages/StructuralDesign";
-import CivilEngineering from "./pages/CivilEngineering";
-import ArchitecturalConsulting from "./pages/ArchitecturalConsulting";
+import CivilEngineering from "./pages/civilengineering/CivilEngineering";
+import ArchitecturalConsulting from "./pages/achitecturalconsulting/ArchitecturalConsulting";
 import ProjectManagement from "./pages/ProjectManagement";
-import AutoCAD from "./pages/AutoCAD";
-import Revit from "./pages/Revit";
-import ETABS from "./pages/ETABS";
-import STAADPro from "./pages/STAADPro";
+import AutoCAD from "./pages/autocad/AutoCAD";
+import Revit from "./pages/revit/Revit";
+import ETABS from "./pages/etabs/ETABS";
+import STAADPro from "./pages/staadpro/STAADPro";
 import Residential from "./pages/Residential";
-import Commercial from "./pages/Commercial";
+import Commercial from "./pages/commercial/Commercial";
 import Industrial from "./pages/Industrial";
 import Career from "./pages/Career";
 import Inquiry from "./pages/Inquiry";
+import Services from "./components/Services";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +51,7 @@ const App = () => (
           <Route path="/industrial" element={<Industrial />} />
           <Route path="/career" element={<Career />} />
           <Route path="/inquiry" element={<Inquiry />} />
+          <Route path="/services" element={<Services />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
