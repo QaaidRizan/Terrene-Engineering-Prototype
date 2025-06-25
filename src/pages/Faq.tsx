@@ -1,5 +1,7 @@
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import Header from '@/components/Header'; // Import Header
+import Footer from '@/components/Footer'; // Import Footer for completeness
 
 const Faq = () => {
   const faqItems = [
@@ -30,38 +32,47 @@ const Faq = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#141414]">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold text-white mb-12 text-center">Frequently Asked Questions</h1>
-          
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border border-gray-800 rounded-lg bg-[#1a1a1a] overflow-hidden">
-                <AccordionTrigger className="px-6 py-4 text-white hover:text-primary hover:no-underline">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-gray-300">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-          
-          <div className="mt-12 text-center">
-            <p className="text-gray-300 mb-6">
-              Still have questions? Contact our team for more information.
-            </p>
-            <a 
-              href="/contact" 
-              className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors"
-            >
-              Contact Us
-            </a>
+    <div className="min-h-screen flex flex-col bg-background">
+      {/* Add Header */}
+      <Header />
+      
+      {/* Main content */}
+      <section className="py-20 bg-[#141414] flex-1">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-4xl font-bold text-white mb-12 text-center">Frequently Asked Questions</h1>
+            
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqItems.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border border-gray-800 rounded-lg bg-[#1a1a1a] overflow-hidden">
+                  <AccordionTrigger className="px-6 py-4 text-white hover:text-primary hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4 text-gray-300">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+            
+            <div className="mt-12 text-center">
+              <p className="text-gray-300 mb-6">
+                Still have questions? Contact our team for more information.
+              </p>
+              <a 
+                href="/contact" 
+                className="inline-flex items-center bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors"
+              >
+                Contact Us
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      
+      {/* Add Footer */}
+      <Footer />
+    </div>
   );
 };
 

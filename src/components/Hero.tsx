@@ -15,14 +15,15 @@ import heroVideo from '@/assert/videos/hero-background.mp4';
 import heroVideo2 from '@/assert/videos/hero-background2.mp4';
 import Logo from '@/assert/Logo2.png';
 
-// Import services from your header or define them here
-import { services } from './Header'; // Adjust path as needed
+// Import services AND serviceCategories from Header component
+import { services, serviceCategories } from './Header'; // Add serviceCategories to the import
 
 
 const Hero = () => {
   // State for menu and videos
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeVideo, setActiveVideo] = useState(1);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   
   // Create refs for both video elements
   const video1Ref = useRef<HTMLVideoElement | null>(null);
@@ -85,6 +86,14 @@ const Hero = () => {
       }
     };
   }, []);
+
+  const toggleSection = (section: string) => {
+    if (expandedSection === section) {
+      setExpandedSection(null);
+    } else {
+      setExpandedSection(section);
+    }
+  };
 
   return (
     <section id="home" className="relative w-full min-h-screen flex flex-col">
@@ -184,69 +193,185 @@ const Hero = () => {
                     SERVICES
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                    <div className="w-[800px] p-6 bg-black/70 backdrop-blur-md rounded-lg border border-white/10 grid grid-cols-3 gap-6">
-                      {/* Column 1: Engineering Services */}
+                    <div className="w-[800px] p-6 bg-black/70 backdrop-blur-md rounded-lg border border-white/10 grid grid-cols-4 gap-6">
+                      {/* Column 1: Architectural */}
                       <div>
                         <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">
-                          Engineering Services
+                          Architectural
                         </h5>
                         <ul className="space-y-2">
-                          {services.slice(0, 5).map((service) => (
-                            <li key={service.to}>
-                              <NavigationMenuLink asChild>
-                                <Link to={service.to} className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
-                                  {service.label}
-                                </Link>
-                              </NavigationMenuLink>
-                            </li>
-                          ))}
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/architectural-consultancy" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Architectural Consultancy
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/interior-design" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Interior Design Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/furniture-design" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Furniture Design & Supply
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/acoustic-lighting" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Acoustic & Lighting Design
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/master-planning" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Master Planning & Urban Design
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
                         </ul>
                       </div>
                       
-                      {/* Column 2: Design Services */}
+                      {/* Column 2: Engineering */}
                       <div>
                         <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">
-                          Design Services
+                          Engineering
                         </h5>
                         <ul className="space-y-2">
-                          {services.slice(5, 10).map((service) => (
-                            <li key={service.to}>
-                              <NavigationMenuLink asChild>
-                                <Link to={service.to} className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
-                                  {service.label}
-                                </Link>
-                              </NavigationMenuLink>
-                            </li>
-                          ))}
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/structural-consultancy" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Structural Consultancy
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/mep-engineering" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                MEP Engineering
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/hvac-solutions" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                HVAC Solutions
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/elv-services" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                ELV Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/material-consultancy" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Material Consultancy
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
                         </ul>
                       </div>
                       
-                      {/* Column 3: Featured Service with Image */}
-                      <div className="space-y-3">
+                      {/* Column 3: Technical */}
+                      <div>
                         <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">
-                          Featured Service
+                          Technical
                         </h5>
-                        <div className="relative rounded-lg overflow-hidden group">
-                          <img 
-                            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&auto=format&fit=crop&q=80" 
-                            alt="Featured Service" 
-                            className="w-full h-40 object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
-                            <div className="p-3">
-                              <h6 className="text-white font-medium mb-1">Structural Engineering</h6>
-                              <Button variant="link" className="text-primary p-0 h-auto text-sm" asChild>
-                                <Link to="/structural-engineering">
-                                  Learn More <ArrowRight className="ml-1 h-3 w-3" />
-                                </Link>
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
+                        <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/laboratory-testing" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Laboratory Testing
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/land-surveying" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Land Surveying & GIS Mapping
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/bim-services" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                BIM Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/software-training" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Software Training
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/import-export" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Import & Export Materials
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
                       </div>
                       
-                      {/* Footer with View All Link */}
-                      <div className="col-span-3 pt-4 mt-2 border-t border-white/10 flex justify-between items-center">
+                      {/* Column 4: Project Management */}
+                      <div>
+                        <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">
+                          Project Management
+                        </h5>
+                        <ul className="space-y-2">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/construction-services" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Construction Services
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/project-management" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Project Management
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/quantity-surveying" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Quantity Surveying
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/construction-claims" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Construction Claims
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link to="/tendering-procurement" className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                                Tendering & Procurement
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
+                      </div>
+                      
+                      {/* Footer with View All Link - Keep this from your original code */}
+                      <div className="col-span-4 pt-4 mt-2 border-t border-white/10 flex justify-between items-center">
                         <p className="text-xs text-white/60">Explore our comprehensive range of engineering and architectural services</p>
                         <Button variant="link" className="text-primary p-0 h-auto" asChild>
                           <Link to="/services">
@@ -332,9 +457,9 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - match font sizes with Header.tsx */}
           {isMenuOpen && (
-            <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex flex-col animate-fade-in">
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex flex-col animate-fade-in">
               <div className="container mx-auto px-4 py-4 flex justify-end">
                 <button 
                   className="text-white"
@@ -343,14 +468,185 @@ const Hero = () => {
                   <X size={24} />
                 </button>
               </div>
-              <div className="flex-1 flex flex-col items-center justify-center">
-                <nav className="flex flex-col space-y-8 text-center">
-                  <Link to="/" className="text-white text-2xl hover:text-primary-100 transition-colors animate-slide-in animation-delay-100">HOME</Link>
-                  <Link to="/about" className="text-white text-2xl hover:text-primary-100 transition-colors animate-slide-in animation-delay-200">COMPANY</Link>
-                  <Link to="/services" className="text-white text-2xl hover:text-primary-100 transition-colors animate-slide-in animation-delay-300">SERVICES</Link>
-                  <Link to="/software" className="text-white text-2xl hover:text-primary-100 transition-colors animate-slide-in animation-delay-400">SOFTWARE</Link>
-                  <Link to="/projects" className="text-white text-2xl hover:text-primary-100 transition-colors animate-slide-in animation-delay-500">PROJECTS</Link>
-                  <Link to="/inquiry" className="text-white text-2xl hover:text-primary-100 transition-colors animate-slide-in animation-delay-600">INQUIRY</Link>
+              <div className="flex-1 overflow-y-auto py-4">
+                <nav className="container mx-auto px-4 flex flex-col space-y-4">
+                  <Link to="/" 
+                    className="text-white hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    HOME
+                  </Link>
+                  
+                  {/* COMPANY Section */}
+                  <div>
+                    <button 
+                      onClick={() => toggleSection('company')}
+                      className="flex items-center justify-between w-full text-left text-white hover:text-primary transition-colors"
+                    >
+                      <span>COMPANY</span>
+                      <ChevronDown 
+                        size={16} 
+                        className={`transform transition-transform ${expandedSection === 'company' ? 'rotate-180' : ''}`} 
+                      />
+                    </button>
+                    
+                    {expandedSection === 'company' && (
+                      <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
+                        <Link to="/about" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          About Terrene
+                        </Link>
+                        <Link to="/Faq" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          FAQ
+                        </Link>
+                        <Link to="/team" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Our Team
+                        </Link>
+                        <Link to="/mission" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Mission & Vision
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* SERVICES Section */}
+                  <div>
+                    <button 
+                      onClick={() => toggleSection('services')}
+                      className="flex items-center justify-between w-full text-left text-white hover:text-primary transition-colors"
+                    >
+                      <span>SERVICES</span>
+                      <ChevronDown 
+                        size={16} 
+                        className={`transform transition-transform ${expandedSection === 'services' ? 'rotate-180' : ''}`} 
+                      />
+                    </button>
+                    
+                    {expandedSection === 'services' && (
+                      <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10 max-h-80 overflow-y-auto">
+                        {serviceCategories.map((category, idx) => (
+                          <div key={idx} className="mb-2">
+                            <h5 className="text-primary font-semibold mb-1 text-sm uppercase tracking-wider border-b border-white/10 pb-1">
+                              {category.category}
+                            </h5>
+                            <div className="space-y-2 pl-2">
+                              {category.services.map((service, serviceIdx) => (
+                                <Link 
+                                  key={serviceIdx} 
+                                  to={service.to} 
+                                  className="block text-sm text-white/80 hover:text-primary"
+                                  onClick={() => setIsMenuOpen(false)}
+                                >
+                                  {service.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* SOFTWARE EXPERTISE Section */}
+                  <div>
+                    <button 
+                      onClick={() => toggleSection('software')}
+                      className="flex items-center justify-between w-full text-left text-white hover:text-primary transition-colors"
+                    >
+                      <span>SOFTWARE EXPERTISE</span>
+                      <ChevronDown 
+                        size={16} 
+                        className={`transform transition-transform ${expandedSection === 'software' ? 'rotate-180' : ''}`} 
+                      />
+                    </button>
+                    
+                    {expandedSection === 'software' && (
+                      <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
+                        <Link to="/autocad" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          AutoCAD
+                        </Link>
+                        <Link to="/revit" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Revit
+                        </Link>
+                        <Link to="/etabs" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          ETABS
+                        </Link>
+                        <Link to="/staad-pro" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          STAAD Pro
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* PROJECTS Section */}
+                  <div>
+                    <button 
+                      onClick={() => toggleSection('projects')}
+                      className="flex items-center justify-between w-full text-left text-white hover:text-primary transition-colors"
+                    >
+                      <span>PROJECTS</span>
+                      <ChevronDown 
+                        size={16} 
+                        className={`transform transition-transform ${expandedSection === 'projects' ? 'rotate-180' : ''}`} 
+                      />
+                    </button>
+                    
+                    {expandedSection === 'projects' && (
+                      <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
+                        <Link to="/residential" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Residential Projects
+                        </Link>
+                        <Link to="/commercial" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Commercial Projects
+                        </Link>
+                        <Link to="/industrial" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Industrial Projects
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* INQUIRY & Contact Buttons */}
+                  <div className="flex flex-col space-y-2 pt-4">
+                    <Button variant="outline" size="sm" className="border-white text-white hover:bg-white/10" asChild>
+                      <Link to="/inquiry" onClick={() => setIsMenuOpen(false)}>INQUIRY</Link>
+                    </Button>
+                    <Button size="sm" className="bg-primary hover:bg-primary/90" asChild>
+                      <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
+                    </Button>
+                  </div>
                 </nav>
               </div>
             </div>
@@ -376,12 +672,7 @@ const Hero = () => {
           </div>
           
           <div className="flex flex-wrap gap-4 justify-center animate-text-fade animation-delay-600">
-            <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
-              Our Services
-            </Button>
-            <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
-              Portfolio <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+           
           </div>
         </div>
       </div>

@@ -14,30 +14,66 @@ import { Link } from 'react-router-dom';
 import Logo from '@/assert/Logo2.png';
 import Faq from '@/pages/Faq';
 
-const services = [
-  { label: 'Architectural Consultancy', to: '/architectural-consulting' },
-  { label: 'Interior Design Services', to: '/interior-design' },
-  { label: 'Furniture Design & Supply', to: '/furniture-design' },
-  { label: 'Acoustic & Lighting Design Consultancy', to: '/acoustic-lighting' },
-  { label: 'Master Planning & Urban Design', to: '/master-planning' },
-  { label: 'Structural Consultancy', to: '/structural-consultancy' },
-  { label: 'MEP Engineering', to: '/mep-engineering' },
-  { label: 'HVAC Solutions', to: '/hvac-solutions' },
-  { label: 'ELV (Extra Low Voltage) Services', to: '/elv-services' },
-  { label: 'Material Consultancy', to: '/material-consultancy' },
-  { label: 'Laboratory Testing & Feasibility Studies', to: '/laboratory-testing' },
-  { label: 'Land Surveying & GIS Mapping', to: '/land-surveying' },
-  { label: 'Construction & Subcontracting Services', to: '/construction-services' },
-  { label: 'Project Management & Supervision', to: '/project-management' },
-  { label: 'Quantity Surveying & Cost Consultancy', to: '/quantity-surveying' },
-  { label: 'Construction Claims & Contract Advisory', to: '/construction-claims' },
-  { label: 'Building Information Modeling (BIM) Services', to: '/bim-services' },
-  { label: 'Software Training for Construction Industry', to: '/software-training' },
-  { label: 'Import & Export of Construction and Interior Materials', to: '/import-export' },
-  { label: 'Tendering & Procurement Consultancy', to: '/tendering-procurement' },
+// First, restructure your services data at the top of the file
+const serviceCategories = [
+  {
+    category: "Architectural",
+    services: [
+      { label: "Architectural Consultancy", to: "/architectural-consulting" },
+      { label: "Interior Design Services", to: "/interior-design" },
+      { label: "Furniture Design & Supply", to: "/furniture-design" },
+      { label: "Acoustic & Lighting Design", to: "/acoustic-lighting" },
+      { label: "Master Planning & Urban Design", to: "/master-planning" }
+    ]
+  },
+  {
+    category: "Engineering",
+    services: [
+      { label: "Structural Consultancy", to: "/structural-consultancy" },
+      { label: "MEP Engineering", to: "/mep-engineering" },
+      { label: "HVAC Solutions", to: "/hvac-solutions" },
+      { label: "ELV Services", to: "/elv-services" },
+      { label: "Material Consultancy", to: "/material-consultancy" }
+    ]
+  },
+  {
+    category: "Technical",
+    services: [
+      { label: "Laboratory Testing", to: "/laboratory-testing" },
+      { label: "Land Surveying & GIS Mapping", to: "/land-surveying" },
+      { label: "BIM Services", to: "/bim-services" },
+      { label: "Software Training", to: "/software-training" },
+      { label: "Import & Export Materials", to: "/import-export" }
+    ]
+  },
+  {
+    category: "Project Management",
+    services: [
+      { label: "Construction Services", to: "/construction-services" },
+      { label: "Project Management", to: "/project-management" },
+      { label: "Quantity Surveying", to: "/quantity-surveying" },
+      { label: "Construction Claims", to: "/construction-claims" },
+      { label: "Tendering & Procurement", to: "/tendering-procurement" }
+    ]
+  }
 ];
 
-const Header = () => {
+// Keep the original flattened list for mobile menu
+const services = serviceCategories.flatMap(category => category.services);
+
+interface HeaderProps {
+  mode?: 'transparent' | 'solid';
+  className?: string;
+  onNavigate?: {
+    home: () => void;
+    about: () => void;
+    services: () => void;
+    projects: () => void;
+    contact: () => void;
+  };
+}
+
+const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
@@ -50,9 +86,15 @@ const Header = () => {
     }
   };
 
+  // Determine header classes based on mode
+  const headerClasses = mode === 'transparent'
+    ? "bg-transparent backdrop-blur-sm sticky top-0 z-50 transition-all duration-300"
+    : "bg-background shadow-sm border-b border-border sticky top-0 z-50 transition-all duration-300";
+
   return (
-    <header className="bg-background shadow-sm border-b border-border sticky top-0 z-50">
+    <header className={`${headerClasses} ${className}`}>
       <div className="container mx-auto px-4 py-4">
+        {/* Text color updates for transparent mode */}
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -60,22 +102,23 @@ const Header = () => {
               <img 
                 src={Logo} 
                 alt="Terrene Engineering Logo" 
-                className="h-14 w-auto"
+                  className="h-14 w-auto" // Increased from h-14 to h-20
+                  style={{ marginTop: '-8px', marginBottom: '-8px' }} 
               />
             </Link>
           </div>
 
-          {/* Navigation items - update text colors */}
+          {/* Navigation items - update text colors for transparent mode */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link to="/" className="text-foreground hover:text-primary-100 transition-colors px-3 py-2">
+                <Link to="/" className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 transition-colors px-3 py-2`}>
                   HOME
                 </Link>
               </NavigationMenuItem>
               
               <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger className="text-foreground hover:text-primary">
+                <NavigationMenuTrigger  className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent`}>
                   COMPANY
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
@@ -106,193 +149,48 @@ const Header = () => {
 
               {/* Mega menu for SERVICES */}
               <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger className="text-foreground hover:text-primary">
+                <NavigationMenuTrigger className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent`}>
                   SERVICES
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="w-[800px] p-6 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
-                    <div className="grid grid-cols-4 gap-x-6 gap-y-3">
-                      {/* Column 1 - Architectural Services */}
-                      <div className="space-y-3">
-                        <h3 className="text-primary font-medium text-sm">Architectural</h3>
+                  <div className="w-[800px] p-6 bg-black/70 backdrop-blur-md rounded-lg border border-white/10 grid grid-cols-4 gap-6">
+                    {serviceCategories.map((category, idx) => (
+                      <div key={idx}>
+                        <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">
+                          {category.category}
+                        </h5>
                         <ul className="space-y-2">
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/architectural-consulting" className="block text-sm hover:text-primary transition-colors">
-                                Architectural Consultancy
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/interior-design" className="block text-sm hover:text-primary transition-colors">
-                                Interior Design Services
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/furniture-design" className="block text-sm hover:text-primary transition-colors">
-                                Furniture Design & Supply
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/acoustic-lighting" className="block text-sm hover:text-primary transition-colors">
-                                Acoustic & Lighting Design
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/master-planning" className="block text-sm hover:text-primary transition-colors">
-                                Master Planning & Urban Design
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
+                          {category.services.map((service, serviceIdx) => (
+                            <li key={serviceIdx}>
+                              <NavigationMenuLink asChild>
+                                <Link 
+                                  to={service.to} 
+                                  className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors"
+                                >
+                                  {service.label}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
                         </ul>
                       </div>
-
-                      {/* Column 2 - Engineering Services */}
-                      <div className="space-y-3">
-                        <h3 className="text-primary font-medium text-sm">Engineering</h3>
-                        <ul className="space-y-2">
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/structural-consultancy" className="block text-sm hover:text-primary transition-colors">
-                                Structural Consultancy
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/mep-engineering" className="block text-sm hover:text-primary transition-colors">
-                                MEP Engineering
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/hvac-solutions" className="block text-sm hover:text-primary transition-colors">
-                                HVAC Solutions
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/elv-services" className="block text-sm hover:text-primary transition-colors">
-                                ELV Services
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/material-consultancy" className="block text-sm hover:text-primary transition-colors">
-                                Material Consultancy
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        </ul>
-                      </div>
-
-                      {/* Column 3 - Technical Services */}
-                      <div className="space-y-3">
-                        <h3 className="text-primary font-medium text-sm">Technical</h3>
-                        <ul className="space-y-2">
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/laboratory-testing" className="block text-sm hover:text-primary transition-colors">
-                                Laboratory Testing
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/land-surveying" className="block text-sm hover:text-primary transition-colors">
-                                Land Surveying & GIS Mapping
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/bim-services" className="block text-sm hover:text-primary transition-colors">
-                                BIM Services
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/software-training" className="block text-sm hover:text-primary transition-colors">
-                                Software Training
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/import-export" className="block text-sm hover:text-primary transition-colors">
-                                Import & Export Materials
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        </ul>
-                      </div>
-
-                      {/* Column 4 - Project Management */}
-                      <div className="space-y-3">
-                        <h3 className="text-primary font-medium text-sm">Project Management</h3>
-                        <ul className="space-y-2">
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/construction-services" className="block text-sm hover:text-primary transition-colors">
-                                Construction Services
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/project-management" className="block text-sm hover:text-primary transition-colors">
-                                Project Management
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/quantity-surveying" className="block text-sm hover:text-primary transition-colors">
-                                Quantity Surveying
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/construction-claims" className="block text-sm hover:text-primary transition-colors">
-                                Construction Claims
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <li>
-                            <NavigationMenuLink asChild>
-                              <Link to="/tendering-procurement" className="block text-sm hover:text-primary transition-colors">
-                                Tendering & Procurement
+                    ))}
+                    
+                    {/* Footer with View All Link */}
+                    <div className="col-span-4 pt-4 mt-2 border-t border-white/10 flex justify-between items-center">
+                      <p className="text-xs text-white/60">Explore our comprehensive range of engineering and architectural services</p>
+                      <Button variant="link" className="text-primary p-0 h-auto" asChild>
+                        <Link to="/services" className="flex items-center">
+                          View All Services <ChevronDown className="ml-1 h-3 w-3 rotate-270" />
                         </Link>
-                      </NavigationMenuLink>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Footer with all services link */}
-                    <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
-                      <Link to="/services" className="text-xs text-primary flex items-center gap-1">
-                        View All Services <ChevronDown className="h-3 w-3 rotate-270" />
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
               <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger className="text-foreground hover:text-primary">
+                <NavigationMenuTrigger  className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent`}>
                   SOFTWARE EXPERTISE
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
@@ -322,7 +220,7 @@ const Header = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger className="text-foreground hover:text-primary">
+                <NavigationMenuTrigger  className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent`}>
                   PROJECTS
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
@@ -349,7 +247,11 @@ const Header = () => {
           </NavigationMenu>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" asChild>
+            <Button 
+              variant="outline" 
+              className={mode === 'transparent' ? "border-white text-white hover:bg-white/10" : ""} 
+              asChild
+            >
               <Link to="/inquiry">INQUIRY</Link>
             </Button>
             <Button>Contact Us</Button>
@@ -423,9 +325,9 @@ const Header = () => {
                         className="block text-sm text-muted-foreground hover:text-primary"
                       >
                         {service.label}
-                    </Link>
-                  ))}
-                </div>
+                      </Link>
+                    ))}
+                  </div>
                 )}
               </div>
 
@@ -504,4 +406,4 @@ const Header = () => {
 };
 
 export default Header;
-export { services };
+export { services, serviceCategories };
