@@ -1,27 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Award, Users, Clock, Target } from 'lucide-react';
 import homepageBuildingImage from '@/assert/homepagebuilding1.jpg';
 
 const About = () => {
-  const stats = [
-    { icon: <Award className="w-6 h-6" />, value: 3, label: "Years Experience" },
-    { icon: <Users className="w-6 h-6" />, value: 50, label: "Projects Completed" },
-    { icon: <Clock className="w-6 h-6" />, value: 24, label: "Support Available", suffix: "/7" },
-    { icon: <Target className="w-6 h-6" />, value: 100, label: "Client Satisfaction", suffix: "%" }
-  ];
-  
-  // Initialize with zeros 
-  const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
   const [isVisible, setIsVisible] = useState(false);
-  const [isStatsVisible, setIsStatsVisible] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const sectionRef = useRef(null);
-  const statsRowRef = useRef(null);
   const imageRef = useRef(null);
   const paragraphRefs = useRef([]);
-  const animationStarted = useRef(false);
   
   // Create refs for each paragraph
   paragraphRefs.current = [];
@@ -33,7 +20,6 @@ const About = () => {
 
   // Animation for paragraphs when section comes into view
   useEffect(() => {
-    console.log("Setting up section observer");
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -52,30 +38,8 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Separate observer for stats row
-  useEffect(() => {
-    console.log("Setting up stats observer");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting) {
-          setIsStatsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 } // Trigger when stats are 20% visible
-    );
-    
-    if (statsRowRef.current) {
-      observer.observe(statsRowRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, []);
-
   // New observer for image visibility
   useEffect(() => {
-    console.log("Setting up image observer");
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
@@ -108,47 +72,11 @@ const About = () => {
     }
   }, [isVisible]);
 
-  // Animate stats counter only when stats row is visible
-  useEffect(() => {
-    if (isStatsVisible && !animationStarted.current) {
-      console.log("Starting stats animation");
-      animationStarted.current = true;
-      
-      const duration = 2000; // 2 seconds
-      const frameDuration = 1000 / 60; // 60fps
-      const totalFrames = Math.round(duration / frameDuration);
-      let frame = 0;
-      
-      const countUp = () => {
-        const progress = Math.min(frame / totalFrames, 1);
-        const updatedStats = stats.map((stat) => {
-          return Math.floor(easeOutQuad(progress) * stat.value);
-        });
-        
-        setAnimatedStats(updatedStats);
-        
-        frame++;
-        if (frame <= totalFrames) {
-          requestAnimationFrame(countUp);
-        } else {
-          // Ensure final value is set
-          setAnimatedStats(stats.map(stat => stat.value));
-        }
-      };
-      
-      // Start the animation
-      requestAnimationFrame(countUp);
-    }
-  }, [isStatsVisible, stats]);
-  
-  // Easing function for smoother animation
-  const easeOutQuad = (t) => t * (2 - t);
-
   return (
     <section id="about" className="py-20 bg-[#141414]" ref={sectionRef}>
       <div className="container mx-auto px-4">
         {/* Main content area */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl font-bold text-white mb-6">About Terrene Engineering</h2>
@@ -232,32 +160,6 @@ const About = () => {
               ></div>
             )}
           </div>
-        </div>
-
-        {/* Stats row at the bottom - with ref */}
-        <div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-8 border-t border-gray-800"
-          ref={statsRowRef}
-        >
-          {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="text-center p-4 bg-[#1a1a1a] rounded-lg border border-gray-800 transform transition-all duration-500"
-              style={{ 
-                opacity: isStatsVisible ? 1 : 0,
-                transform: isStatsVisible ? 'translateY(0)' : 'translateY(20px)',
-                transitionDelay: `${index * 150}ms` 
-              }}
-            >
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 text-primary rounded-lg mb-3">
-                {stat.icon}
-              </div>
-              <div className="text-2xl font-bold text-white">
-                {animatedStats[index]}{stat.suffix || ''}
-              </div>
-              <div className="text-sm text-gray-400">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </div>
       

@@ -138,10 +138,10 @@ const Index = () => {
       
       {/* Remaining sections with refs */}
       <div ref={servicesRef}>
-        <Services />
+         <Projects />
       </div>
       <div ref={projectsRef}>
-        <Projects />
+         <Services />
       </div>
       <div ref={contactRef}>
         <Contact />

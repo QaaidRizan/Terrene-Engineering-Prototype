@@ -210,8 +210,10 @@ const Services = () => {
       <div className="container mx-auto px-4">
         {/* Asymmetric header with background element */}
         <div className="relative mb-20">
+          {/* DELETE THESE LINES
           <div className="absolute -top-10 -left-5 w-20 h-20 bg-primary/20 rounded-full blur-2xl"></div>
           <div className="absolute top-10 right-20 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+          */}
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div 
@@ -222,21 +224,19 @@ const Services = () => {
             >
               {/* WHAT WE OFFER section - no changes to this content */}
               <div className="relative mb-6">
-                {/* Your existing decorative elements... */}
-                <div className="relative inline-block py-3 px-6 bg-gradient-to-r from-primary/20 to-background border-l-4 border-primary rounded-r-lg shadow-lg">
-                  {/* Your existing elements... */}
-                  <h5 className="text-primary font-extrabold text-lg tracking-widest">WHAT WE OFFER</h5>
+                <div className="relative inline-block py-3 px-6 bg-black/20 border-l-4 border-white/50 rounded-r-lg">
+                  <h5 className="text-white font-extrabold text-lg tracking-widest">WHAT WE OFFER</h5>
                 </div>
               </div>
               
-              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                 Engineering Excellence <br/>
-                <span className="text-primary">for Every Project</span>
+                <span className="text-white">for Every Project</span>
               </h2>
               
               {/* Your existing animated divider... */}
               
-              <p className="text-lg text-muted-foreground mb-8 relative">
+              <p className="text-lg text-white mb-8 relative">
                 <span className="relative">
                   Our multidisciplinary approach combines technical expertise with innovative solutions 
                   to overcome complex engineering challenges. We work across industries to deliver 
@@ -244,7 +244,7 @@ const Services = () => {
                 </span>
               </p>
               
-              <Button variant="outline" className="group border-primary text-primary hover:bg-primary/10">
+              <Button variant="outline" className="group border-white text-white hover:bg-white/10">
                 Explore all services
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -274,19 +274,19 @@ const Services = () => {
               animated.servicesSection ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
-            <h3 className="text-2xl font-semibold mb-6 pl-4 border-l-4 border-primary">Featured Services</h3>
-            <p className="text-muted-foreground mb-8 max-w-3xl">
+            <h3 className="text-2xl font-semibold mb-6 pl-4 border-l-4 border-white/50 text-white">Featured Services</h3>
+            <p className="text-white mb-8 max-w-3xl">
               Drag to explore our comprehensive range of engineering and architectural services designed to meet the needs of any project scope or complexity.
             </p>
           </div>
           
           <div className="relative">
             {/* Arrow buttons remain the same */}
-            <button onClick={prev} className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110">
+            <button onClick={prev} className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all">
               <ArrowRight className="w-5 h-5 transform rotate-180" />
             </button>
             
-            <button onClick={next} className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110">
+            <button onClick={next} className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white w-10 h-10 rounded-full flex items-center justify-center transition-all">
               <ArrowRight className="w-5 h-5" />
             </button>
             
@@ -331,17 +331,17 @@ const Services = () => {
                     </div>
                     
                     <CardHeader>
-                      <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                      <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center text-white mb-4 group-hover:bg-white group-hover:text-background transition-all duration-300">
                         {service.icon}
                       </div>
-                      <CardTitle className="text-xl font-semibold">{service.title}</CardTitle>
+                      <CardTitle className="text-xl font-semibold text-white">{service.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground mb-4">{service.description}</p>
+                      <p className="text-white mb-4">{service.description}</p>
                       <ul className="space-y-2">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-sm">
-                            <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                          <li key={idx} className="flex items-center text-sm text-white">
+                            <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
                             {feature}
                           </li>
                         ))}

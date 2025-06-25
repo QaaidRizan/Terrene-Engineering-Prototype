@@ -23,7 +23,10 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       className={`fixed bottom-6 right-6 z-[9999] p-3 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#22c15e] transition-all duration-300 hover:scale-110 ${isVisible ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}
-      style={{ boxShadow: '0 4px 12px rgba(37, 211, 102, 0.5)' }}
+      style={{ 
+        boxShadow: '0 4px 12px rgba(37, 211, 102, 0.5)',
+        animation: isVisible ? 'blink-move 3s infinite' : 'none'
+      }}
       aria-label="Chat with us on WhatsApp"
     >
       {/* WhatsApp Logo - Phone in Speech Bubble */}

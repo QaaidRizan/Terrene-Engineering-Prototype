@@ -124,23 +124,38 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                   <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
                     <NavigationMenuLink asChild>
-                      <Link to="/about" className="block px-3 py-2 text-sm text-foreground hover:bg-accent rounded">
+                      <Link to="/about" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         About Us
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/Faq" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                      <Link to="/why-terrene" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Why Terrene
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="/Faq" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         FAQ
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/team" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Our Team
+                      <Link to="/careers" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Careers
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/mission" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Mission & Vision
+                      <Link to="/team" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Team
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="/blog" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Blog
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="/sitemap" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Sitemap
                       </Link>
                     </NavigationMenuLink>
                   </div>
@@ -219,29 +234,10 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger  className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent`}>
+              <NavigationMenuItem>
+                <Link to="/projects" className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 transition-colors px-3 py-2`}>
                   PROJECTS
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="w-48 p-2">
-                    <NavigationMenuLink asChild>
-                      <Link to="/residential" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Residential Projects
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="/commercial" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Commercial Projects
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link to="/industrial" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                        Industrial Projects
-                      </Link>
-                    </NavigationMenuLink>
-                  </div>
-                </NavigationMenuContent>
+                </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -287,17 +283,26 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                 
                 {expandedSection === 'company' && (
                   <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
-                    <Link to="/about" className="block text-sm text-muted-foreground hover:text-primary">
+                    <Link to="/about" className="block text-sm text-white/80 hover:text-primary">
                       About Us
                     </Link>
-                    <Link to="/Faq" className="block text-sm text-muted-foreground hover:text-primary">
+                    <Link to="/why-terrene" className="block text-sm text-white/80 hover:text-primary">
+                      Why Terrene
+                    </Link>
+                    <Link to="/Faq" className="block text-sm text-white/80 hover:text-primary">
                       FAQ
                     </Link>
-                    <Link to="/team" className="block text-sm text-muted-foreground hover:text-primary">
-                      Our Team
+                    <Link to="/careers" className="block text-sm text-white/80 hover:text-primary">
+                      Careers
                     </Link>
-                    <Link to="/mission" className="block text-sm text-muted-foreground hover:text-primary">
-                      Mission & Vision
+                    <Link to="/team" className="block text-sm text-white/80 hover:text-primary">
+                      Team
+                    </Link>
+                    <Link to="/blog" className="block text-sm text-white/80 hover:text-primary">
+                      Blog
+                    </Link>
+                    <Link to="/sitemap" className="block text-sm text-white/80 hover:text-primary">
+                      Sitemap
                     </Link>
                   </div>
                 )}
@@ -364,30 +369,12 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
 
               {/* Projects Section */}
               <div>
-                <button 
-                  onClick={() => toggleSection('projects')}
-                  className="flex items-center justify-between w-full text-left text-foreground hover:text-primary transition-colors"
+                <Link 
+                  to="/projects" 
+                  className="text-foreground hover:text-primary transition-colors"
                 >
-                  <span>PROJECTS</span>
-                  <ChevronDown 
-                    size={16} 
-                    className={`transform transition-transform ${expandedSection === 'projects' ? 'rotate-180' : ''}`} 
-                  />
-                </button>
-                
-                {expandedSection === 'projects' && (
-                  <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
-                    <Link to="/residential" className="block text-sm text-muted-foreground hover:text-primary">
-                      Residential Projects
-                    </Link>
-                    <Link to="/commercial" className="block text-sm text-muted-foreground hover:text-primary">
-                      Commercial Projects
-                    </Link>
-                    <Link to="/industrial" className="block text-sm text-muted-foreground hover:text-primary">
-                      Industrial Projects
-                    </Link>
-                  </div>
-                )}
+                  PROJECTS
+                </Link>
               </div>
 
               {/* Buttons */}

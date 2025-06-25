@@ -136,14 +136,14 @@ const Hero = () => {
       <header className="relative z-50 w-full">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo - now with white color for visibility */}
+            {/* Logo - simplified without background */}
             <div className="flex-shrink-0 flex items-center">
               <Link to="/">
                 <img 
                   src={Logo} 
                   alt="Terrene Engineering Logo" 
-                  className="h-24 w-auto" // Increased from h-14 to h-20
-                  style={{ marginTop: '-8px', marginBottom: '-8px' }} // Negative margins to prevent navbar expansion
+                  className="h-24 w-auto" 
+                  style={{ marginTop: '-8px', marginBottom: '-8px' }} 
                 />
               </Link>
             </div>
@@ -157,6 +157,7 @@ const Hero = () => {
                   </Link>
                 </NavigationMenuItem>
                 
+                {/* Update the desktop navigation COMPANY dropdown */}
                 <NavigationMenuItem className="relative">
                   <NavigationMenuTrigger className="text-white hover:text-primary-100 bg-transparent">
                     COMPANY
@@ -165,22 +166,37 @@ const Hero = () => {
                     <div className="w-48 p-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10">
                       <NavigationMenuLink asChild>
                         <Link to="/about" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
-                          About Terrene
+                          About Us
                         </Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link to="/Faq" className="block px-3 py-2 text-sm hover:bg-accent rounded">
+                        <Link to="/why-terrene" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                          Why Terrene
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link to="/faq" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                           FAQ
                         </Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link to="/team" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                          Our Team
+                        <Link to="/careers" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                          Careers
                         </Link>
                       </NavigationMenuLink>
                       <NavigationMenuLink asChild>
-                        <Link to="/mission" className="block px-3 py-2 text-sm hover:bg-accent rounded">
-                          Mission & Vision
+                        <Link to="/team" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                          Team
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link to="/blog" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                          Blog
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link to="/sitemap" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                          Sitemap
                         </Link>
                       </NavigationMenuLink>
                     </div>
@@ -414,29 +430,10 @@ const Hero = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                <NavigationMenuItem className="relative">
-                  <NavigationMenuTrigger className="text-white hover:text-primary-100 bg-transparent">
-                    PROJECT
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                    <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
-                      <NavigationMenuLink asChild>
-                        <Link to="/residential" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
-                          Residential Projects
-                        </Link>
-                      </NavigationMenuLink>
-                      <NavigationMenuLink asChild>
-                        <Link to="/commercial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
-                          Commercial Projects
-                        </Link>
-                      </NavigationMenuLink>
-                      <NavigationMenuLink asChild>
-                        <Link to="/industrial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
-                          Industrial Projects
-                        </Link>
-                      </NavigationMenuLink>
-                    </div>
-                  </NavigationMenuContent>
+                <NavigationMenuItem>
+                  <Link to="/projects" className="text-white hover:text-primary-100 transition-colors px-3 py-2">
+                    PROJECTS
+                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -498,23 +495,41 @@ const Hero = () => {
                         >
                           About Terrene
                         </Link>
-                        <Link to="/Faq" 
+                        <Link to="/why-terrene" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Why Terrene
+                        </Link>
+                        <Link to="/faq" 
                           className="block text-sm text-white/80 hover:text-primary"
                           onClick={() => setIsMenuOpen(false)}
                         >
                           FAQ
                         </Link>
+                        <Link to="/careers" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Careers
+                        </Link>
                         <Link to="/team" 
                           className="block text-sm text-white/80 hover:text-primary"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          Our Team
+                          Team
                         </Link>
-                        <Link to="/mission" 
+                        <Link to="/blog" 
                           className="block text-sm text-white/80 hover:text-primary"
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          Mission & Vision
+                          Blog
+                        </Link>
+                        <Link to="/sitemap" 
+                          className="block text-sm text-white/80 hover:text-primary"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Sitemap
                         </Link>
                       </div>
                     )}
@@ -601,42 +616,13 @@ const Hero = () => {
                     )}
                   </div>
                   
-                  {/* PROJECTS Section */}
-                  <div>
-                    <button 
-                      onClick={() => toggleSection('projects')}
-                      className="flex items-center justify-between w-full text-left text-white hover:text-primary transition-colors"
-                    >
-                      <span>PROJECTS</span>
-                      <ChevronDown 
-                        size={16} 
-                        className={`transform transition-transform ${expandedSection === 'projects' ? 'rotate-180' : ''}`} 
-                      />
-                    </button>
-                    
-                    {expandedSection === 'projects' && (
-                      <div className="pl-4 pt-2 flex flex-col space-y-2 bg-black/40 mt-2 rounded-lg p-2 border border-white/10">
-                        <Link to="/residential" 
-                          className="block text-sm text-white/80 hover:text-primary"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          Residential Projects
-                        </Link>
-                        <Link to="/commercial" 
-                          className="block text-sm text-white/80 hover:text-primary"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          Commercial Projects
-                        </Link>
-                        <Link to="/industrial" 
-                          className="block text-sm text-white/80 hover:text-primary"
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          Industrial Projects
-                        </Link>
-                      </div>
-                    )}
-                  </div>
+                  {/* PROJECTS Section - Simple link instead of dropdown */}
+                  <Link to="/projects" 
+                    className="text-white hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    PROJECTS
+                  </Link>
                   
                   {/* INQUIRY & Contact Buttons */}
                   <div className="flex flex-col space-y-2 pt-4">
@@ -654,26 +640,28 @@ const Hero = () => {
         </div>
       </header>
       
-      {/* Hero Content */}
-      <div className="relative z-10 flex-grow flex items-center justify-center">
-        <div className="flex flex-col items-center justify-center text-center w-full px-4">
-          <h1 className="text-white text-4xl md:text-6xl font-bold mb-4 animate-text-fade drop-shadow-lg">
-            We are <span className="text-primary">specialist engineering</span> consultants
+      {/* Hero Content - Updated to match reference design */}
+      <div className="relative z-10 flex-grow flex items-center">
+        <div className="container mx-auto px-4 lg:px-8 flex flex-col items-start justify-center text-left">
+          <h1 className="text-white text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <span className="inline-block" style={{ animation: 'popUp 0.7s ease-out 0.2s both' }}>We are </span>
+            <span className="inline-block" style={{ animation: 'popUp 0.7s ease-out 0.4s both' }}>specialist</span>
+            <br/>
+            <span className="inline-block" style={{ animation: 'popUp 0.7s ease-out 0.6s both' }}>engineering </span>
+            <span className="inline-block" style={{ animation: 'popUp 0.7s ease-out 0.8s both' }}>consultants</span>
           </h1>
-          <p className="text-white text-lg md:text-xl max-w-3xl mb-8 animate-text-fade animation-delay-200 drop-shadow-md">
+          
+          <p className="text-white text-lg md:text-xl max-w-3xl mb-12 animate-text-fade animation-delay-200 opacity-90">
             delivering solutions for some of the world's largest and most complex projects. Our approach is guided by our unique engineering philosophies:
           </p>
-          
-          <div className="flex flex-wrap gap-6 justify-center mb-10 animate-text-fade animation-delay-400">
-            <span className="text-white text-xl md:text-3xl font-bold">LEAD.</span>
-            <span className="text-primary text-xl md:text-3xl font-bold">CREATE.</span>
-            <span className="text-white text-xl md:text-3xl font-bold">DELIVER.</span>
-            <span className="text-primary text-xl md:text-3xl font-bold">SUSTAIN.</span>
-          </div>
-          
-          <div className="flex flex-wrap gap-4 justify-center animate-text-fade animation-delay-600">
-           
-          </div>
+
+          {/* Updated to match reference design - all white, same size */}
+          <div className="flex flex-wrap gap-8 mb-12 animate-text-fade animation-delay-400">
+            <span className="text-white text-3xl md:text-4xl font-bold">LEAD.</span>
+            <span className="text-white text-3xl md:text-4xl font-bold">CREATE.</span>
+            <span className="text-white text-3xl md:text-4xl font-bold">DELIVER.</span>
+            <span className="text-white text-3xl md:text-4xl font-bold">SUSTAIN.</span>
+          </div>  
         </div>
       </div>
 

@@ -134,20 +134,11 @@ const Projects = () => {
         {/* Section header with highlight - enhanced version */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
           <div>
-            {/* Enhanced Our PROJECT label */}
-            <div className="relative inline-block mb-4">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/50 to-primary/20 rounded-lg blur-lg"></div>
-              <div className="relative px-4 py-2 bg-background/90 backdrop-blur-sm border border-primary/30 rounded-lg">
-                <h5 className="text-primary font-bold text-sm tracking-widest">OUR PROJECTS</h5>
-              </div>
-              <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
-                <div className="w-6 h-6 bg-primary/30 rounded-full blur-lg"></div>
-              </div>
-            </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+            
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
               Featured Projects <br/>
-              <span className="text-primary">Across Industries</span>
+              <span className="text-white">Across Industries</span>
             </h2>
             
             {/* Animated divider */}
