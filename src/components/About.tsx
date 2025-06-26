@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button';
 import homepageBuildingImage from '@/assert/homepagebuilding1.jpg';
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const [isImageVisible, setIsImageVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [startTextAnimation, setStartTextAnimation] = useState(false);
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
   const paragraphRefs = useRef([]);
@@ -18,27 +18,7 @@ const About = () => {
     }
   };
 
-  // Animation for paragraphs when section comes into view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, []);
-
-  // New observer for image visibility
+  // Observer for image visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,6 +26,11 @@ const About = () => {
         if (entry.isIntersecting) {
           setIsImageVisible(true);
           observer.disconnect();
+          
+          // Start text animation after image animation (1.2s delay)
+          setTimeout(() => {
+            setStartTextAnimation(true);
+          }, 1200);
         }
       },
       { threshold: 0.3 } // Trigger when image is 30% visible
@@ -58,9 +43,9 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Animate paragraphs when section is visible
+  // Animate paragraphs only after image animation completes
   useEffect(() => {
-    if (isVisible) {
+    if (startTextAnimation) {
       // Add fade-in class to paragraphs with staggered delay
       paragraphRefs.current.forEach((paragraph, index) => {
         setTimeout(() => {
@@ -70,49 +55,15 @@ const About = () => {
         }, 300 * index);
       });
     }
-  }, [isVisible]);
+  }, [startTextAnimation]);
 
   return (
     <section id="about" className="py-20 bg-[#141414]" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        {/* Main content area */}
+        {/* Main content area - order swapped */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-4xl font-bold text-white mb-6">About Terrene Engineering</h2>
-              <div className="space-y-4 text-gray-300 leading-relaxed">
-                <p 
-                  ref={addParagraphRef} 
-                  className="opacity-0 translate-y-8 transition-all duration-700 ease-out"
-                >
-                  Established with a vision to transform the engineering landscape, Terrene Engineering 
-                  (Private) Limited has been at the forefront of innovative engineering solutions for over two decades.
-                </p>
-                <p 
-                  ref={addParagraphRef} 
-                  className="opacity-0 translate-y-8 transition-all duration-700 ease-out"
-                >
-                  Our team of licensed professional engineers specializes in structural design, civil engineering, 
-                  and architectural consulting. We pride ourselves on delivering projects that not only meet but 
-                  exceed industry standards while maintaining the highest levels of safety and sustainability.
-                </p>
-                <p 
-                  ref={addParagraphRef} 
-                  className="opacity-0 translate-y-8 transition-all duration-700 ease-out"
-                >
-                  From residential developments to large-scale commercial projects, we bring technical expertise, 
-                  creative problem-solving, and unwavering commitment to every challenge we undertake.
-                </p>
-              </div>
-            </div>
-
-            <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
-              Learn More About Us
-            </Button>
-          </div>
-
-          {/* Enhanced image section with hover effects */}
-          <div className="relative" ref={imageRef}>
+          {/* Image section now first */}
+          <div className="relative lg:order-1 order-2" ref={imageRef}>
             <div 
               className="overflow-hidden rounded-lg shadow-lg border border-gray-800 transform transition-all duration-1000"
               style={{ 
@@ -160,10 +111,53 @@ const About = () => {
               ></div>
             )}
           </div>
+
+          {/* Text content now second - with delayed animation */}
+          <div className="space-y-8 lg:order-2 order-1">
+            <div>
+              <h2 
+                className="text-5xl lg:text-6xl font-bold text-white mb-8 opacity-0 translate-y-8 transition-all duration-700 ease-out"
+                style={{ 
+                  opacity: startTextAnimation ? 1 : 0,
+                  transform: startTextAnimation ? 'translateY(0)' : 'translateY(20px)',
+                  transitionDelay: '200ms'
+                }}
+              >
+                About Terrene Engineering
+              </h2>
+              <div className="space-y-4 text-gray-300 leading-relaxed">
+                <p 
+                  ref={addParagraphRef} 
+                  className="opacity-0 translate-y-8 transition-all duration-700 ease-out text-lg"
+                  style={{ transitionDelay: '400ms' }}
+                >
+                  Established with a vision to transform the engineering landscape, Terrene Engineering 
+                  (Private) Limited has been at the forefront of innovative solutions for over two decades. 
+                  Our team of licensed professional engineers specializes in structural design, civil engineering, 
+                  and architectural consulting, delivering projects that exceed industry standards while maintaining 
+                  the highest levels of safety and sustainability. From residential developments to large-scale 
+                  commercial projects, we bring technical expertise, creative problem-solving, and unwavering 
+                  commitment to every challenge we undertake.
+                </p>
+              </div>
+            </div>
+
+            <Button 
+              size="lg" 
+              className="bg-primary text-white hover:bg-primary/90 opacity-0 transition-all duration-500 ease-out"
+              style={{ 
+                opacity: startTextAnimation ? 1 : 0,
+                transform: startTextAnimation ? 'translateY(0)' : 'translateY(20px)',
+                transitionDelay: '600ms'
+              }}
+            >
+              Learn More About Us
+            </Button>
+          </div>
         </div>
       </div>
       
-      {/* Add CSS for animations */}
+      {/* CSS for animations */}
       <style>{`
         .animate-fade-in {
           opacity: 1 !important;

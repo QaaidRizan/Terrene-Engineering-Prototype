@@ -6,7 +6,12 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import WhatsAppButton from '../components/WhatsAppButton'; // Import the WhatsApp button
+import CompletionStats from '../components/completion'; // Fix capitalization
+import ServiceOfferings from '../components/ServiceOfferings';
+import GlobalPresence from '../components/GlobalPresence';
+import Testimonials from '../components/Testimonials'; // Import Testimonials component
+
+import WhatsAppButton from '../components/WhatsAppButton';
 
 // Replace the existing scrollToSection function with this improved version
 const scrollToSection = (elementRef) => {
@@ -67,6 +72,7 @@ const Index = () => {
   const heroRef = useRef(null);
   const servicesRef = useRef(null);
   const projectsRef = useRef(null);
+  const testimonialsRef = useRef(null); // Add ref for testimonials section
   const contactRef = useRef(null);
   
   // Add refs for all sections you want to scroll to
@@ -126,6 +132,7 @@ const Index = () => {
             about: () => scrollToSection(aboutRef),
             services: () => scrollToSection(servicesRef),
             projects: () => scrollToSection(projectsRef),
+            testimonials: () => scrollToSection(testimonialsRef), // Add navigation for testimonials
             contact: () => scrollToSection(contactRef)
           }} 
         />
@@ -136,16 +143,30 @@ const Index = () => {
         <About />
       </div>
       
-      {/* Remaining sections with refs */}
+      {/* Services section with ref */}
       <div ref={servicesRef}>
-         <Projects />
+        <Services />
       </div>
+      
+      {/* Projects section with ref */}
       <div ref={projectsRef}>
-         <Services />
+        <Projects />
       </div>
+      
+      {/* Add the GlobalPresence component */}
+      <GlobalPresence />
+      
+      {/* Add Testimonials section with ref */}
+      <div ref={testimonialsRef}>
+        <Testimonials />
+      </div>
+      
       <div ref={contactRef}>
+        <CompletionStats />
+        <ServiceOfferings />
         <Contact />
       </div>
+      
       <Footer />
     </div>
   );

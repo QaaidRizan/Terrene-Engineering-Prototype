@@ -65,11 +65,12 @@ interface HeaderProps {
   mode?: 'transparent' | 'solid';
   className?: string;
   onNavigate?: {
-    home: () => void;
-    about: () => void;
-    services: () => void;
-    projects: () => void;
-    contact: () => void;
+    home?: () => void;
+    about?: () => void;
+    services?: () => void;
+    projects?: () => void;
+    testimonials?: () => void; // Add this line to include testimonials
+    contact?: () => void;
   };
 }
 
@@ -102,8 +103,8 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
               <img 
                 src={Logo} 
                 alt="Terrene Engineering Logo" 
-                  className="h-14 w-auto" // Increased from h-14 to h-20
-                  style={{ marginTop: '-8px', marginBottom: '-8px' }} 
+                className="h-20 w-auto" // Increased from h-14 to h-20
+                style={{ marginTop: '-12px', marginBottom: '-12px' }} // Adjusted margins to keep navbar height consistent
               />
             </Link>
           </div>
@@ -118,11 +119,11 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
               </NavigationMenuItem>
               
               <NavigationMenuItem className="relative">
-                <NavigationMenuTrigger  className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent`}>
+                <NavigationMenuTrigger className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent`}>
                   COMPANY
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
+                  <div className="w-48 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
                     <NavigationMenuLink asChild>
                       <Link to="/about" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         About Us
@@ -134,13 +135,28 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/Faq" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
-                        FAQ
+                      <Link to="/sustainability" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Sustainability 
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/careers" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
-                        Careers
+                      <Link to="/testimonial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Testimonial
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="/sitemap" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Sitemap
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="/qualitypolicy" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Quality Policy
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link to="/faq" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Client Questions
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
@@ -149,13 +165,18 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
+                      <Link to="/career" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Career
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
                       <Link to="/blog" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
                         Blog
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link to="/sitemap" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
-                        Sitemap
+                      <Link to="/inquiry" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">
+                        Contact Us
                       </Link>
                     </NavigationMenuLink>
                   </div>
@@ -168,7 +189,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                   SERVICES
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="w-[800px] p-6 bg-black/70 backdrop-blur-md rounded-lg border border-white/10 grid grid-cols-4 gap-6">
+                  <div className="w-[800px] p-6 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 grid grid-cols-4 gap-6">
                     {serviceCategories.map((category, idx) => (
                       <div key={idx}>
                         <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">
@@ -209,7 +230,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                   SOFTWARE EXPERTISE
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                  <div className="w-48 p-2 bg-black/70 backdrop-blur-md rounded-lg border border-white/10">
+                  <div className="w-48 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
                     <NavigationMenuLink asChild>
                       <Link to="/autocad" className="block px-3 py-2 text-sm hover:bg-accent rounded">
                         AutoCAD
@@ -239,6 +260,20 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                   PROJECTS
                 </Link>
               </NavigationMenuItem>
+
+              {/* New Sustainability nav item */}
+              <NavigationMenuItem>
+                <Link to="/sustainability" className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 transition-colors px-3 py-2`}>
+                  SUSTAINABILITY
+                </Link>
+              </NavigationMenuItem>
+
+              {/* New Contact Us nav item */}
+              <NavigationMenuItem>
+                <Link to="/inquiry" className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 transition-colors px-3 py-2`}>
+                  CONTACT US
+                </Link>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -250,7 +285,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
             >
               <Link to="/inquiry">INQUIRY</Link>
             </Button>
-            <Button>Contact Us</Button>
+            {/* Contact Us button removed */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -289,20 +324,32 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     <Link to="/why-terrene" className="block text-sm text-white/80 hover:text-primary">
                       Why Terrene
                     </Link>
-                    <Link to="/Faq" className="block text-sm text-white/80 hover:text-primary">
-                      FAQ
+                    <Link to="/sustainability" className="block text-sm text-white/80 hover:text-primary">
+                      Sustainability 
                     </Link>
-                    <Link to="/careers" className="block text-sm text-white/80 hover:text-primary">
-                      Careers
+                    <Link to="/testimonial" className="block text-sm text-white/80 hover:text-primary">
+                      Testimonial
+                    </Link>
+                    <Link to="/sitemap" className="block text-sm text-white/80 hover:text-primary">
+                      Sitemap
+                    </Link>
+                    <Link to="/qualitypolicy" className="block text-sm text-white/80 hover:text-primary">
+                      Quality Policy
+                    </Link>
+                    <Link to="/faq" className="block text-sm text-white/80 hover:text-primary">
+                      Client Questions
                     </Link>
                     <Link to="/team" className="block text-sm text-white/80 hover:text-primary">
                       Team
                     </Link>
+                    <Link to="/career" className="block text-sm text-white/80 hover:text-primary">
+                      Career
+                    </Link>
                     <Link to="/blog" className="block text-sm text-white/80 hover:text-primary">
                       Blog
                     </Link>
-                    <Link to="/sitemap" className="block text-sm text-white/80 hover:text-primary">
-                      Sitemap
+                    <Link to="/inquiry" className="block text-sm text-white/80 hover:text-primary">
+                      Contact Us
                     </Link>
                   </div>
                 )}
