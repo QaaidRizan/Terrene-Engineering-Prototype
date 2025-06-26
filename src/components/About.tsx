@@ -64,34 +64,59 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image section now first */}
           <div className="relative lg:order-1 order-2" ref={imageRef}>
+            {/* Decorative outer frame */}
             <div 
-              className="overflow-hidden rounded-lg shadow-lg border border-gray-800 transform transition-all duration-1000"
+              className="absolute inset-0 -m-3 rounded-lg border border-primary/30 transform transition-all duration-1000"
+              style={{ 
+                opacity: isImageVisible ? 0.7 : 0,
+                transform: isImageVisible ? 'translateY(0) scale(1.03)' : 'translateY(40px) scale(1)',
+                transitionDelay: '50ms'
+              }}
+            ></div>
+            
+            {/* Decorative corners */}
+            <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000" 
+                 style={{ opacity: isImageVisible ? 0.8 : 0 }}></div>
+            <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000" 
+                 style={{ opacity: isImageVisible ? 0.8 : 0, transitionDelay: '200ms' }}></div>
+            <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000" 
+                 style={{ opacity: isImageVisible ? 0.8 : 0, transitionDelay: '400ms' }}></div>
+            <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000" 
+                 style={{ opacity: isImageVisible ? 0.8 : 0, transitionDelay: '600ms' }}></div>
+            
+            {/* Main image container */}
+            <div 
+              className="overflow-hidden rounded-lg shadow-lg border-2 border-gray-800 transform transition-all duration-1000 relative z-10"
               style={{ 
                 opacity: isImageVisible ? 1 : 0,
                 transform: isImageVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
-                transitionDelay: '150ms' 
+                transitionDelay: '150ms',
+                boxShadow: '0 0 30px rgba(0,0,0,0.5)'
               }}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
+              {/* Additional inner frame */}
+              <div className="absolute inset-0 border-4 border-black/20 z-10 pointer-events-none rounded-md"></div>
+              
+              {/* Image with existing hover effect */}
               <img 
                 src={homepageBuildingImage} 
                 alt="Terrene Engineering Building" 
-                className="w-full h-auto object-cover rounded-lg transition-transform duration-700"
+                className="w-full h-auto object-cover rounded-md transition-transform duration-700"
                 style={{
                   transform: isHovering ? 'scale(1.05)' : 'scale(1)'
                 }}
               />
               
-              {/* Overlay effect that appears on hover */}
+              {/* Keep existing overlay and hover effects */}
               <div 
-                className="absolute inset-0 bg-primary/10 opacity-0 transition-opacity duration-300 pointer-events-none"
+                className="absolute inset-0 bg-primary/10 opacity-0 transition-opacity duration-300 pointer-events-none z-20"
                 style={{ opacity: isHovering ? 0.7 : 0 }}
               ></div>
               
-              {/* Text that appears on hover */}
               <div
-                className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300"
+                className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 z-30"
                 style={{ opacity: isHovering ? 1 : 0 }}
               >
                 <div className="bg-black/70 px-6 py-4 rounded-md">
@@ -99,17 +124,6 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Light beam effect on hover */}
-            {isHovering && (
-              <div 
-                className="absolute inset-0 rounded-lg pointer-events-none"
-                style={{ 
-                  background: `radial-gradient(circle 200px at 50% 50%, rgba(255,255,255,0.2), transparent)`,
-                  zIndex: 1
-                }}
-              ></div>
-            )}
           </div>
 
           {/* Text content now second - with delayed animation */}

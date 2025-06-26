@@ -229,13 +229,39 @@ const Services = () => {
 							</Button>
 						</div>
 
-						<div className="relative h-96 md:h-[26rem] overflow-hidden rounded-lg shadow-xl transform transition-all duration-700 delay-300">
-							<div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
-							<img
-								src="https://images.unsplash.com/photo-1504307651254-35680f356dfd"
-								alt="Engineering services"
-								className="w-full h-full object-cover"
-							/>
+						{/* Image with decorative frame */}
+						<div className="relative h-96 md:h-[26rem] overflow-visible transform transition-all duration-700 delay-300">
+							{/* Decorative outer frame */}
+							<div
+								className="absolute inset-0 -m-3 rounded-lg border border-primary/30 transform transition-all duration-1000"
+								style={{
+									opacity: animated.header ? 0.7 : 0,
+									transform: animated.header ? 'translateY(0) scale(1.03)' : 'translateY(40px) scale(1)',
+									transitionDelay: '350ms'
+								}}
+							></div>
+
+							{/* Decorative corners */}
+							<div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000"
+								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '450ms' }}></div>
+							<div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000"
+								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '550ms' }}></div>
+							<div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000"
+								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '650ms' }}></div>
+							<div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000"
+								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '750ms' }}></div>
+
+							{/* Main image container */}
+							<div className="relative h-full overflow-hidden rounded-lg shadow-xl transform transition-all duration-700 z-10">
+								<div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
+								{/* Additional inner frame */}
+								<div className="absolute inset-0 border-[3px] border-black/20 z-20 pointer-events-none rounded-lg"></div>
+								<img
+									src="https://images.unsplash.com/photo-1504307651254-35680f356dfd"
+									alt="Engineering services"
+									className="w-full h-full object-cover"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>

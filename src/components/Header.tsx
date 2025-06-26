@@ -261,6 +261,13 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                 </Link>
               </NavigationMenuItem>
 
+              {/* New Package nav item */}
+              <NavigationMenuItem>
+                <Link to="/packages" className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 transition-colors px-3 py-2`}>
+                  PACKAGE
+                </Link>
+              </NavigationMenuItem>
+
               {/* New Sustainability nav item */}
               <NavigationMenuItem>
                 <Link to="/sustainability" className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 transition-colors px-3 py-2`}>
