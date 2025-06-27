@@ -237,18 +237,18 @@ const Services = () => {
 						{/* Image with enhanced premium white glow effect */}
 						<div className="relative h-96 md:h-[26rem] overflow-visible transform transition-all duration-700 delay-300">
 							{/* Enhanced outer white glow effect */}
-							<div className="absolute -inset-6 bg-gradient-to-r from-white/10 via-white/15 to-white/10 rounded-xl blur-2xl opacity-80 z-0"></div>
+							<div className="absolute -inset-6 bg-gradient-to-r from-black/30 via-white/15 to-black/30 rounded-xl blur-2xl opacity-90 z-0"></div>
 							
 							{/* Secondary blue-accented glow */}
-							<div className="absolute -inset-3 bg-gradient-to-br from-primary/15 via-white/8 to-transparent rounded-lg blur-xl opacity-70 z-0"></div>
+							<div className="absolute -inset-3 bg-gradient-to-br from-primary/20 via-white/8 to-transparent rounded-lg blur-xl opacity-80 z-0"></div>
 							
 							{/* Additional inner white glow */}
-							<div className="absolute -inset-1 bg-gradient-to-br from-white/15 to-transparent rounded-lg blur-md opacity-50 z-5"></div>
+							<div className="absolute -inset-1 bg-gradient-to-br from-white/20 to-transparent rounded-lg blur-md opacity-60 z-5"></div>
 							
 							{/* Main image container with enhanced styling */}
 							<div className="relative h-full overflow-hidden rounded-lg transform transition-all duration-700 z-10"
 								 style={{
-								   boxShadow: '0 25px 50px -12px rgba(0,0,0,0.6), 0 15px 25px -7px rgba(22,138,255,0.25), 0 0 0 1px rgba(255,255,255,0.15) inset, 0 0 30px rgba(255,255,255,0.1) inset'
+								   boxShadow: '0 25px 50px -12px rgba(20,20,20,0.7), 0 15px 25px -7px rgba(14,117,160,0.25), 0 0 0 1px rgba(255,255,255,0.15) inset, 0 0 30px rgba(255,255,255,0.12) inset'
 								 }}>
 								{/* Top edge highlight */}
 								<div className="absolute top-0 left-0 w-full h-[3px] bg-white/40 blur-[0.5px] z-20"></div>
@@ -257,7 +257,7 @@ const Services = () => {
 								<div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-white/30 to-transparent opacity-60 blur-sm z-10"></div>
 								
 								{/* Bottom right corner glow */}
-								<div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-primary/20 via-white/20 to-transparent opacity-50 blur-md z-10"></div>
+								<div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-primary/30 via-white/20 to-transparent opacity-60 blur-md z-10"></div>
 								
 								{/* Image overlay gradient */}
 								<div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
@@ -278,7 +278,7 @@ const Services = () => {
 							</div>
 							
 							{/* Subtle animated glow */}
-							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 animate-pulse rounded-lg z-5"
+							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 animate-pulse rounded-lg z-5"
 								 style={{animationDuration: '3s'}}></div>
 						</div>
 					</div>

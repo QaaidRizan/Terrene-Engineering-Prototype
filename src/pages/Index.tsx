@@ -150,25 +150,19 @@ const Index = () => {
       <div ref={projectsRef}>
         <Projects />
       </div>
-      
       {/* Add the GlobalPresence component */}
       <GlobalPresence />
-      
       {/* Add Testimonials section with ref */}
       <div ref={testimonialsRef}>
         <Testimonials />
       </div>
-      
       <div ref={contactRef}>
         <ServiceOfferings />
         {/* Add TrustedByLogos after ServiceOfferings */}
-                <CompletionStats />
-
+        <CompletionStats />
         <TrustedByLogos />
-        
         <Contact />
       </div>
-      
       <Footer />
     </div>
   );

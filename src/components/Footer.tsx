@@ -48,82 +48,34 @@ const Footer = () => {
 
             <div>
               <h4 className="font-semibold text-lg mb-4">Services</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
-                {/* Architectural */}
-                <div>
-                  <h5 className="font-semibold text-primary mb-2 text-sm">Architectural</h5>
-                  <ul className="space-y-1 text-sm">
-                    <li><a href="/architectural-consulting" className="text-gray-300 hover:text-white transition-colors">Architectural Consultancy</a></li>
-                    <li><a href="/interior-design" className="text-gray-300 hover:text-white transition-colors">Interior Design Services</a></li>
-                    <li><a href="/furniture-design" className="text-gray-300 hover:text-white transition-colors">Furniture Design & Supply</a></li>
-                    <li><a href="/acoustic-lighting" className="text-gray-300 hover:text-white transition-colors">Acoustic & Lighting Design</a></li>
-                    <li><a href="/master-planning" className="text-gray-300 hover:text-white transition-colors">Master Planning & Urban Design</a></li>
-                  </ul>
-                </div>
-                {/* Engineering */}
-                <div>
-                  <h5 className="font-semibold text-primary mb-2 text-sm">Engineering</h5>
-                  <ul className="space-y-1 text-sm">
-                    <li><a href="/structural-consultancy" className="text-gray-300 hover:text-white transition-colors">Structural Consultancy</a></li>
-                    <li><a href="/mep-engineering" className="text-gray-300 hover:text-white transition-colors">MEP Engineering</a></li>
-                    <li><a href="/hvac-solutions" className="text-gray-300 hover:text-white transition-colors">HVAC Solutions</a></li>
-                    <li><a href="/elv-services" className="text-gray-300 hover:text-white transition-colors">ELV Services</a></li>
-                    <li><a href="/material-consultancy" className="text-gray-300 hover:text-white transition-colors">Material Consultancy</a></li>
-                  </ul>
-                </div>
-                {/* Technical */}
-                <div>
-                  <h5 className="font-semibold text-primary mb-2 text-sm">Technical</h5>
-                  <ul className="space-y-1 text-sm">
-                    <li><a href="/laboratory-testing" className="text-gray-300 hover:text-white transition-colors">Laboratory Testing</a></li>
-                    <li><a href="/land-surveying" className="text-gray-300 hover:text-white transition-colors">Land Surveying & GIS Mapping</a></li>
-                    <li><a href="/bim-services" className="text-gray-300 hover:text-white transition-colors">BIM Services</a></li>
-                    <li><a href="/software-training" className="text-gray-300 hover:text-white transition-colors">Software Training</a></li>
-                    <li><a href="/import-export" className="text-gray-300 hover:text-white transition-colors">Import & Export Materials</a></li>
-                  </ul>
-                </div>
-                {/* Project Management */}
-                <div>
-                  <h5 className="font-semibold text-primary mb-2 text-sm">Project Management</h5>
-                  <ul className="space-y-1 text-sm">
-                    <li><a href="/construction-services" className="text-gray-300 hover:text-white transition-colors">Construction Services</a></li>
-                    <li><a href="/project-management" className="text-gray-300 hover:text-white transition-colors">Project Management</a></li>
-                    <li><a href="/quantity-surveying" className="text-gray-300 hover:text-white transition-colors">Quantity Surveying</a></li>
-                    <li><a href="/construction-claims" className="text-gray-300 hover:text-white transition-colors">Construction Claims</a></li>
-                    <li><a href="/tendering-procurement" className="text-gray-300 hover:text-white transition-colors">Tendering & Procurement</a></li>
-                  </ul>
-                </div>
+              <div className="flex flex-col sm:flex-row gap-8">
+                <ul className="space-y-2 text-sm">
+                  {/* First line of services */}
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Structural Engineering</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Civil Engineering</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Architectural Drafting</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Project Management</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Code Compliance</a></li>
+                </ul>
+                <ul className="space-y-2 text-sm">
+                  {/* Second line of services */}
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">MEP Engineering</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Interior Design Services</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">BIM Services</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Laboratory Testing</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Quantity Surveying</a></li>
+                </ul>
               </div>
             </div>
 
             <div>
               <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="/" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                <li><a href="/about" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="/why-terrene" className="text-gray-300 hover:text-white transition-colors">Why Terrene</a></li>
-                <li><a href="/sustainability" className="text-gray-300 hover:text-white transition-colors">Sustainability</a></li>
-                <li><a href="/testimonial" className="text-gray-300 hover:text-white transition-colors">Testimonial</a></li>
-                <li><a href="/projects" className="text-gray-300 hover:text-white transition-colors">Projects</a></li>
-                <li><a href="/career" className="text-gray-300 hover:text-white transition-colors">Career</a></li>
-                <li><a href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</a></li>
-                <li><a href="/inquiry" className="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
-                <li><a href="/faq" className="text-gray-300 hover:text-white transition-colors">Client Questions</a></li>
-                <li><a href="/team" className="text-gray-300 hover:text-white transition-colors">Team</a></li>
-                <li><a href="/sitemap" className="text-gray-300 hover:text-white transition-colors">Sitemap</a></li>
-                <li><a href="/qualitypolicy" className="text-gray-300 hover:text-white transition-colors">Quality Policy</a></li>
-                <li><a href="/services" className="text-gray-300 hover:text-white transition-colors">All Services</a></li>
-                <li><a href="/packages" className="text-gray-300 hover:text-white transition-colors">Packages</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-lg mb-4">Software Expertise</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="/autocad" className="text-gray-300 hover:text-white transition-colors">AutoCAD</a></li>
-                <li><a href="/revit" className="text-gray-300 hover:text-white transition-colors">Revit</a></li>
-                <li><a href="/etabs" className="text-gray-300 hover:text-white transition-colors">ETABS</a></li>
-                <li><a href="/staad-pro" className="text-gray-300 hover:text-white transition-colors">STAAD Pro</a></li>
+                <li><a href="#home" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                <li><a href="#about" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                <li><a href="#projects" className="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
+                <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Careers</a></li>
               </ul>
             </div>
 
