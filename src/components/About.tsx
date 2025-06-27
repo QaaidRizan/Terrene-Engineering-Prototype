@@ -58,8 +58,8 @@ const About = () => {
   }, [startTextAnimation]);
 
   return (
-    <section id="about" className="py-20 bg-[#141414]" ref={sectionRef}>
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 bg-[#141414] w-full" ref={sectionRef}>
+      <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
         {/* Main content area - order swapped */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image section now first */}

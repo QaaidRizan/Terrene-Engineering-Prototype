@@ -116,8 +116,7 @@ const Index = () => {
       </div>
       
       {/* Header that appears when scrolling past Hero to About */}
-      <div 
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+      <div className="fixed top-0 left-0 right-0 w-screen z-50 transition-all duration-300" 
         style={{ 
           transform: showHeader ? 'translateY(0)' : 'translateY(-100%)',
           opacity: showHeader ? 1 : 0
@@ -125,14 +124,14 @@ const Index = () => {
       >
         <Header 
           mode="transparent" 
-          className="bg-black/80 backdrop-blur-sm border-b border-white/10"
+          className="bg-black/80 backdrop-blur-sm border-b border-white/10 w-full"
           // Pass scroll functions to Header for navigation
           onNavigate={{
             home: () => scrollToSection(heroRef),
             about: () => scrollToSection(aboutRef),
             services: () => scrollToSection(servicesRef),
             projects: () => scrollToSection(projectsRef),
-            testimonials: () => scrollToSection(testimonialsRef), // Add navigation for testimonials
+            testimonials: () => scrollToSection(testimonialsRef),
             contact: () => scrollToSection(contactRef)
           }} 
         />

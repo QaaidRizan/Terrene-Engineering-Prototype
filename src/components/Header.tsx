@@ -93,9 +93,9 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
     : "bg-background shadow-sm border-b border-border sticky top-0 z-50 transition-all duration-300";
 
   return (
-    <header className={`${headerClasses} ${className}`}>
-      <div className="container mx-auto px-4 py-4">
-        {/* Text color updates for transparent mode */}
+    <header className={`${headerClasses} ${className} w-full`}>
+      {/* Change from container to full-width wrapper */}
+      <div className="w-full max-w-[2400px] mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -109,7 +109,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
             </Link>
           </div>
 
-          {/* Navigation items - update text colors for transparent mode */}
+          {/* Navigation items - extend width */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
               <NavigationMenuItem>

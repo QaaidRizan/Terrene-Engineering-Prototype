@@ -28,8 +28,8 @@ const ServiceOfferings = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-r from-black/40 to-black/20 backdrop-blur-sm">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 bg-[#141414] w-full">
+      <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
         <motion.div 
           ref={ref}
           initial={{ opacity: 0, y: 20 }}

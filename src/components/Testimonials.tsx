@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -47,8 +47,35 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-	const [activeIndex, setActiveIndex] = React.useState(0);
+	const [activeIndex, setActiveIndex] = useState(0);
+	const [isHovering, setIsHovering] = useState(false);
 	const maxIndex = Math.ceil(testimonials.length / 2) - 1;
+	const timerRef = useRef<NodeJS.Timeout | null>(null);
+	
+	// Auto scroll functionality
+	useEffect(() => {
+		// Clear any existing timer
+		if (timerRef.current) {
+			clearInterval(timerRef.current);
+		}
+		
+		// Set up auto-scroll timer if not hovering
+		if (!isHovering) {
+			timerRef.current = setInterval(() => {
+				setActiveIndex(current => {
+					// Move to next slide or loop back to beginning
+					return current < maxIndex ? current + 1 : 0;
+				});
+			}, 5000); // Change slides every 5 seconds
+		}
+		
+		// Clean up timer when component unmounts or dependencies change
+		return () => {
+			if (timerRef.current) {
+				clearInterval(timerRef.current);
+			}
+		};
+	}, [isHovering, maxIndex]);
 
 	const handlePrevious = () => {
 		setActiveIndex((current) => (current > 0 ? current - 1 : 0));
@@ -60,15 +87,19 @@ const Testimonials = () => {
 
 	return (
 		<section className="py-20 bg-gradient-to-b from-background to-black/5">
-			<div className="container mx-auto px-4">
+			<div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
 				<div className="text-center mb-12">
-					<h2 className="text-3xl md:text-4xl font-bold mb-2">Client Testimonials</h2>
+					<h2 className="text-3xl md:text-4xl font-bold mb-2">Voices of Trust</h2>
 					<p className="text-muted-foreground max-w-2xl mx-auto">
-						Discover what our clients have to say about their experience working with Terrene Engineering.
+					  Our reputation speaks through the words of those we've served. Read what distinguished clients say about our engineering excellence and dedicated service.
 					</p>
 				</div>
 
-				<div className="relative">
+				<div 
+					className="relative" 
+					onMouseEnter={() => setIsHovering(true)}
+					onMouseLeave={() => setIsHovering(false)}
+				>
 					<div className="overflow-hidden">
 						<div
 							className="flex transition-transform duration-500 ease-in-out"
