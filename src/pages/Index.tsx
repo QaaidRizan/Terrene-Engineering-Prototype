@@ -10,8 +10,10 @@ import CompletionStats from '../components/completion'; // Fix capitalization
 import ServiceOfferings from '../components/ServiceOfferings';
 import GlobalPresence from '../components/GlobalPresence';
 import Testimonials from '../components/Testimonials'; // Import Testimonials component
+import TrustedByLogos from '../components/TrustedByLogos'; // <-- Add this import at the top
 
-import WhatsAppButton from '../components/WhatsAppButton';
+// Remove WhatsAppButton import
+// import WhatsAppButton from '../components/WhatsAppButton';
 
 // Replace the existing scrollToSection function with this improved version
 const scrollToSection = (elementRef) => {
@@ -107,9 +109,6 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-background">
-      {/* WhatsApp Button - add this line */}
-      <WhatsAppButton />
-      
       {/* Hero at the top with ref */}
       <div ref={heroRef}>
         <Hero />
@@ -161,8 +160,12 @@ const Index = () => {
       </div>
       
       <div ref={contactRef}>
-        <CompletionStats />
         <ServiceOfferings />
+        {/* Add TrustedByLogos after ServiceOfferings */}
+                <CompletionStats />
+
+        <TrustedByLogos />
+        
         <Contact />
       </div>
       

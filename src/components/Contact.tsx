@@ -34,14 +34,10 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-[#141414]">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 bg-[#141414] w-full">
+      <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to start your next engineering project? Contact our team of experts 
-            for professional consultation and innovative solutions.
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
@@ -49,6 +45,8 @@ const Contact = () => {
             <Card className="!bg-[#1a1a1a] !border-gray-700">
               <CardHeader>
                 <CardTitle className="!text-white">Send us a Message</CardTitle>
+                <p className="text-xl text-gray-300 max-w-3xl mt-2">
+                </p>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">

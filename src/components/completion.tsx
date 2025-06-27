@@ -52,8 +52,8 @@ const CompletionStats = () => {
 	}, [controls, inView]);
 
 	return (
-		<section className="py-12 bg-black/20 backdrop-blur-md border-y border-white/10">
-			<div className="container mx-auto px-4">
+		<section className="py-12 bg-black/20 backdrop-blur-md border-y border-white/10 w-full">
+			<div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
 				<motion.div
 					ref={ref}
 					initial="hidden"

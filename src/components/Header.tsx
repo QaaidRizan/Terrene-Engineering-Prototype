@@ -264,7 +264,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
               {/* New Package nav item */}
               <NavigationMenuItem>
                 <Link to="/packages" className={`${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 transition-colors px-3 py-2`}>
-                  PACKAGE
+                  PACKAGES
                 </Link>
               </NavigationMenuItem>
 
@@ -284,7 +284,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
             </NavigationMenuList>
           </NavigationMenu>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-4 -ml-4">
             <Button 
               variant="outline" 
               className={mode === 'transparent' ? "border-white text-white hover:bg-white/10" : ""} 
@@ -292,7 +292,6 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
             >
               <Link to="/inquiry">INQUIRY</Link>
             </Button>
-            {/* Contact Us button removed */}
           </div>
 
           {/* Mobile Menu Button */}

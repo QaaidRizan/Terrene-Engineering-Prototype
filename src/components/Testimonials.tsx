@@ -106,33 +106,40 @@ const Testimonials = () => {
 							style={{ transform: `translateX(-${activeIndex * 50}%)` }}
 						>
 							{testimonials.map((testimonial) => (
-								<div
-									key={testimonial.id}
-									className="w-full md:w-1/2 flex-shrink-0 px-4 mb-8"
-								>
-									<div className="bg-black/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-xl h-full flex flex-col">
-										<div className="mb-4">
-											<Quote className="h-8 w-8 text-primary opacity-50" />
-										</div>
-										<p className="text-foreground italic mb-6 flex-grow">"{testimonial.quote}"</p>
-										<div className="flex items-center">
-											<div className="mr-4">
-												<img
-													src={testimonial.image}
-													alt={testimonial.name}
-													className="w-12 h-12 rounded-full object-cover border-2 border-primary"
-												/>
-											</div>
-											<div>
-												<h4 className="font-medium text-foreground">{testimonial.name}</h4>
-												<p className="text-sm text-muted-foreground">
-													{testimonial.position}, {testimonial.company}
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							))}
+  <div
+    key={testimonial.id}
+    className="w-full md:w-1/2 flex-shrink-0 px-4 mb-8"
+  >
+    <div className="relative">
+      {/* Glowing border around the review card */}
+      <div className="absolute inset-0 rounded-xl pointer-events-none z-0">
+        <div className="absolute inset-0 rounded-xl border-2 border-white/20 blur-[2px] opacity-80"></div>
+        <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-white/10 via-primary/10 to-white/10 blur-lg opacity-60"></div>
+      </div>
+      <div className="bg-black/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-xl h-full flex flex-col relative z-10">
+        <div className="mb-4">
+          <Quote className="h-8 w-8 text-primary opacity-50" />
+        </div>
+        <p className="text-foreground italic mb-6 flex-grow">"{testimonial.quote}"</p>
+        <div className="flex items-center">
+          <div className="mr-4">
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-12 h-12 rounded-full object-cover border-2 border-primary"
+            />
+          </div>
+          <div>
+            <h4 className="font-medium text-foreground">{testimonial.name}</h4>
+            <p className="text-sm text-muted-foreground">
+              {testimonial.position}, {testimonial.company}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
 						</div>
 					</div>
 

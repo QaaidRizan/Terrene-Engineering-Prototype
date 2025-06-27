@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Building2, Cog, Ruler, Shield, Activity, ChevronDown, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import architecturalBg from '../assert/Architectural.jpg';
+import engineeringBg from '../assert/Engineering.jpg';
+import technicalBg from '../assert/Technical.jpg';
+import projectManagementBg from '../assert/ProjectManagment.jpg';
+import specializedServiceBg from '../assert/Service.jpg';
 
 // Define main service categories with sub-services
 const serviceCategories = [
@@ -184,8 +189,8 @@ const Services = () => {
 	}, []);
 
 	return (
-		<section id="services" className="py-20 bg-background overflow-hidden">
-			<div className="container mx-auto px-4">
+		<section id="services" className="py-20 bg-background overflow-hidden w-full">
+			<div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
 				{/* Header section */}
 				<div className="relative mb-20">
 					<div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -229,39 +234,52 @@ const Services = () => {
 							</Button>
 						</div>
 
-						{/* Image with decorative frame */}
+						{/* Image with enhanced premium white glow effect */}
 						<div className="relative h-96 md:h-[26rem] overflow-visible transform transition-all duration-700 delay-300">
-							{/* Decorative outer frame */}
-							<div
-								className="absolute inset-0 -m-3 rounded-lg border border-primary/30 transform transition-all duration-1000"
-								style={{
-									opacity: animated.header ? 0.7 : 0,
-									transform: animated.header ? 'translateY(0) scale(1.03)' : 'translateY(40px) scale(1)',
-									transitionDelay: '350ms'
-								}}
-							></div>
-
-							{/* Decorative corners */}
-							<div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000"
-								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '450ms' }}></div>
-							<div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000"
-								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '550ms' }}></div>
-							<div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000"
-								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '650ms' }}></div>
-							<div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000"
-								style={{ opacity: animated.header ? 0.8 : 0, transitionDelay: '750ms' }}></div>
-
-							{/* Main image container */}
-							<div className="relative h-full overflow-hidden rounded-lg shadow-xl transform transition-all duration-700 z-10">
+							{/* Enhanced outer white glow effect */}
+							<div className="absolute -inset-6 bg-gradient-to-r from-white/10 via-white/15 to-white/10 rounded-xl blur-2xl opacity-80 z-0"></div>
+							
+							{/* Secondary blue-accented glow */}
+							<div className="absolute -inset-3 bg-gradient-to-br from-primary/15 via-white/8 to-transparent rounded-lg blur-xl opacity-70 z-0"></div>
+							
+							{/* Additional inner white glow */}
+							<div className="absolute -inset-1 bg-gradient-to-br from-white/15 to-transparent rounded-lg blur-md opacity-50 z-5"></div>
+							
+							{/* Main image container with enhanced styling */}
+							<div className="relative h-full overflow-hidden rounded-lg transform transition-all duration-700 z-10"
+								 style={{
+								   boxShadow: '0 25px 50px -12px rgba(0,0,0,0.6), 0 15px 25px -7px rgba(22,138,255,0.25), 0 0 0 1px rgba(255,255,255,0.15) inset, 0 0 30px rgba(255,255,255,0.1) inset'
+								 }}>
+								{/* Top edge highlight */}
+								<div className="absolute top-0 left-0 w-full h-[3px] bg-white/40 blur-[0.5px] z-20"></div>
+								
+								{/* Corner highlight */}
+								<div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-white/30 to-transparent opacity-60 blur-sm z-10"></div>
+								
+								{/* Bottom right corner glow */}
+								<div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-primary/20 via-white/20 to-transparent opacity-50 blur-md z-10"></div>
+								
+								{/* Image overlay gradient */}
 								<div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
-								{/* Additional inner frame */}
-								<div className="absolute inset-0 border-[3px] border-black/20 z-20 pointer-events-none rounded-lg"></div>
+								
 								<img
 									src="https://images.unsplash.com/photo-1504307651254-35680f356dfd"
 									alt="Engineering services"
 									className="w-full h-full object-cover"
 								/>
 							</div>
+							
+							{/* Enhanced decorative corner elements with glow */}
+							<div className="absolute -top-2 -left-2 w-10 h-10 border-t-2 border-l-2 border-white/40 rounded-tl-md z-20">
+								<div className="absolute -inset-1 bg-white/20 blur-sm"></div>
+							</div>
+							<div className="absolute -bottom-2 -right-2 w-10 h-10 border-b-2 border-r-2 border-white/40 rounded-br-md z-20">
+								<div className="absolute -inset-1 bg-white/20 blur-sm"></div>
+							</div>
+							
+							{/* Subtle animated glow */}
+							<div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 animate-pulse rounded-lg z-5"
+								 style={{animationDuration: '3s'}}></div>
 						</div>
 					</div>
 				</div>
@@ -312,14 +330,79 @@ const Services = () => {
 
 					{/* Sub-services panel */}
 					<div
-						className={`bg-black/40 backdrop-blur-md rounded-lg p-6 border border-white/10 transition-all duration-500 ${
+						className={`relative overflow-hidden rounded-lg p-6 border border-white/10 transition-all duration-500 ${
 							activeService !== null
 								? 'opacity-100 translate-y-0 max-h-[800px]'
 								: 'opacity-0 -translate-y-10 max-h-0 overflow-hidden'
 						}`}
 					>
+						{/* Dynamic background image for Architectural category */}
+						{activeService === 0 && (
+							<div className="absolute inset-0 -z-10">
+								<img 
+									src={architecturalBg} 
+									alt="Architectural background" 
+									className="w-full h-full object-cover"
+								/>
+								<div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+							</div>
+						)}
+						
+						{/* Dynamic background image for Engineering category */}
+						{activeService === 1 && (
+							<div className="absolute inset-0 -z-10">
+								<img 
+									src={engineeringBg} 
+									alt="Engineering background" 
+									className="w-full h-full object-cover"
+								/>
+								<div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+							</div>
+						)}
+
+						{/* Dynamic background image for Technical category */}
+						{activeService === 2 && (
+							<div className="absolute inset-0 -z-10">
+								<img 
+									src={technicalBg} 
+									alt="Technical background" 
+									className="w-full h-full object-cover"
+								/>
+								<div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+							</div>
+						)}
+
+						{/* Dynamic background image for Project Management category */}
+						{activeService === 3 && (
+							<div className="absolute inset-0 -z-10">
+								<img 
+									src={projectManagementBg} 
+									alt="Project Management background" 
+									className="w-full h-full object-cover"
+								/>
+								<div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+							</div>
+						)}
+
+						{/* Dynamic background image for Specialized Services category */}
+						{activeService === 4 && (
+							<div className="absolute inset-0 -z-10">
+								<img 
+									src={specializedServiceBg} 
+									alt="Specialized Services background" 
+									className="w-full h-full object-cover"
+								/>
+								<div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+							</div>
+						)}
+
+						{/* Default background for other categories */}
+						{activeService !== 0 && activeService !== 1 && activeService !== 2 && activeService !== 3 && activeService !== 4 && (
+							<div className="absolute inset-0 bg-black/40 backdrop-blur-md -z-10"></div>
+						)}
+						
 						{activeService !== null && (
-							<div>
+							<div className="relative z-10">
 								<div className="mb-8">
 									<h3 className="text-2xl font-semibold text-white mb-2">
 										{serviceCategories[activeService].title}
@@ -333,7 +416,7 @@ const Services = () => {
 									{serviceCategories[activeService].subServices.map((subService, idx) => (
 										<div
 											key={idx}
-											className="bg-white/5 hover:bg-white/10 p-5 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-1"
+											className="bg-white/5 hover:bg-white/10 p-5 rounded-lg border border-white/5 transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm"
 										>
 											<h4 className="text-lg font-medium text-white mb-2">
 												{subService.title}

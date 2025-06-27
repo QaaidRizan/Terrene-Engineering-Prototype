@@ -161,12 +161,12 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - Temporarily removed
       <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
         <div className="w-8 h-12 border-2 border-white rounded-full flex items-start justify-center p-1">
           <div className="w-1.5 h-3 bg-white rounded-full animate-scroll-indicator"></div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

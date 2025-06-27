@@ -64,63 +64,69 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image section now first */}
           <div className="relative lg:order-1 order-2" ref={imageRef}>
-            {/* Decorative outer frame */}
+            {/* Main image container with enhanced premium white glow */}
             <div 
-              className="absolute inset-0 -m-3 rounded-lg border border-primary/30 transform transition-all duration-1000"
-              style={{ 
-                opacity: isImageVisible ? 0.7 : 0,
-                transform: isImageVisible ? 'translateY(0) scale(1.03)' : 'translateY(40px) scale(1)',
-                transitionDelay: '50ms'
-              }}
-            ></div>
-            
-            {/* Decorative corners */}
-            <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000" 
-                 style={{ opacity: isImageVisible ? 0.8 : 0 }}></div>
-            <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000" 
-                 style={{ opacity: isImageVisible ? 0.8 : 0, transitionDelay: '200ms' }}></div>
-            <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-primary opacity-0 transition-opacity duration-1000" 
-                 style={{ opacity: isImageVisible ? 0.8 : 0, transitionDelay: '400ms' }}></div>
-            <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-primary opacity-0 transition-opacity duration-1000" 
-                 style={{ opacity: isImageVisible ? 0.8 : 0, transitionDelay: '600ms' }}></div>
-            
-            {/* Main image container */}
-            <div 
-              className="overflow-hidden rounded-lg shadow-lg border-2 border-gray-800 transform transition-all duration-1000 relative z-10"
+              className="overflow-visible relative z-10 transform transition-all duration-1000"
               style={{ 
                 opacity: isImageVisible ? 1 : 0,
                 transform: isImageVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
                 transitionDelay: '150ms',
-                boxShadow: '0 0 30px rgba(0,0,0,0.5)'
+                borderRadius: '24px 4px 24px 4px',
+                boxShadow: isImageVisible ? 
+                  '0 25px 50px -12px rgba(0,0,0,0.5), 0 15px 25px -7px rgba(22,138,255,0.25), 0 0 0 1px rgba(255,255,255,0.2) inset, 0 0 50px rgba(255,255,255,0.2) inset, 0 0 30px rgba(255,255,255,0.1)' : 
+                  'none',
+                padding: '4px'
               }}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
-              {/* Additional inner frame */}
-              <div className="absolute inset-0 border-4 border-black/20 z-10 pointer-events-none rounded-md"></div>
+              {/* Outer premium white glow - larger and more intense */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-white/10 via-white/15 to-white/10 rounded-[inherit] blur-2xl z-0"></div>
               
-              {/* Image with existing hover effect */}
-              <img 
-                src={homepageBuildingImage} 
-                alt="Terrene Engineering Building" 
-                className="w-full h-auto object-cover rounded-md transition-transform duration-700"
-                style={{
-                  transform: isHovering ? 'scale(1.05)' : 'scale(1)'
-                }}
-              />
+              {/* Secondary bloom effect */}
+              <div className="absolute -inset-2 bg-gradient-to-br from-white/10 via-primary/20 to-transparent rounded-[inherit] blur-lg opacity-80 z-0"></div>
               
-              {/* Keep existing overlay and hover effects */}
-              <div 
-                className="absolute inset-0 bg-primary/10 opacity-0 transition-opacity duration-300 pointer-events-none z-20"
-                style={{ opacity: isHovering ? 0.7 : 0 }}
-              ></div>
-              
-              <div
-                className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 z-30"
-                style={{ opacity: isHovering ? 1 : 0 }}
-              >
-                <div className="bg-black/70 px-6 py-4 rounded-md">
-                  <p className="text-white font-medium">View Project Gallery</p>
+              {/* Image wrapper with custom curved corners */}
+              <div className="relative overflow-hidden rounded-[inherit] h-full">
+                {/* Image with existing hover effect */}
+                <img 
+                  src={homepageBuildingImage} 
+                  alt="Terrene Engineering Building" 
+                  className="w-full h-auto object-cover transition-transform duration-700"
+                  style={{
+                    transform: isHovering ? 'scale(1.05)' : 'scale(1)'
+                  }}
+                />
+                
+                {/* Enhanced white top edge highlight */}
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-white/60 blur-[1px]"></div>
+                
+                {/* Corner highlight - brighter with white */}
+                <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-white/60 to-transparent opacity-60 blur-md rounded-tl-[inherit]"></div>
+                
+                {/* Opposite corner highlight - enhanced */}
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-primary/30 via-white/40 to-transparent opacity-50 blur-md rounded-br-[inherit]"></div>
+                
+                {/* Animated white glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 animate-pulse"
+                      style={{ animationDuration: '3s' }}></div>
+                
+                {/* Stronger ambient white glow */}
+                <div className="absolute -bottom-40 -left-20 w-[160%] h-60 bg-gradient-to-t from-white/30 to-transparent blur-3xl opacity-40 pointer-events-none"></div>
+                
+                {/* Hover effects remain unchanged */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 opacity-0 transition-opacity duration-300 pointer-events-none z-20"
+                  style={{ opacity: isHovering ? 0.9 : 0 }}></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-500 pointer-events-none z-10"
+                  style={{ opacity: isHovering ? 1 : 0 }}></div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-all duration-300 z-30"
+                  style={{ 
+                    opacity: isHovering ? 1 : 0,
+                    transform: isHovering ? 'translateY(0)' : 'translateY(10px)'
+                  }}>
+                  <div className="bg-black/60 backdrop-blur-sm px-6 py-4 rounded-md border border-white/30 shadow-lg shadow-white/10">
+                    <p className="text-white font-medium">View Project Gallery</p>
+                  </div>
                 </div>
               </div>
             </div>
